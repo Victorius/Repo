@@ -1,0 +1,58 @@
+private void formKeyReleased(java.awt.event.KeyEvent evt) { 
+switch(evt.getKeyCode()) {
+case KeyEvent.CTRL_DOWN_MASK: isCtrlPressed = false; break;
+case KeyEvent.ALT_DOWN_MASK: isAltPressed = false; break;
+case KeyEvent.SHIFT_DOWN_MASK: isShiftPressed = false; break;
+}
+this.requestFocus();
+} 
+
+private void formKeyPressed(java.awt.event.KeyEvent evt) { 
+switch(evt.getKeyCode()) {
+case KeyEvent.CTRL_DOWN_MASK: isCtrlPressed = true; break;
+case KeyEvent.ALT_DOWN_MASK: isAltPressed = true; break;
+case KeyEvent.SHIFT_DOWN_MASK: isShiftPressed = true; break;
+case KeyEvent.VK_A: {
+if(isAltPressed) {
+addAction();
+}
+}
+case KeyEvent.VK_E: {
+if(isAltPressed) {
+editAction();
+}
+}
+case KeyEvent.VK_D: {
+if(isAltPressed) {
+deleteAction();
+}
+}
+case KeyEvent.VK_N: {
+if(isCtrlPressed) {
+newAction();
+}
+}
+case KeyEvent.VK_S: {
+if(isCtrlPressed) {
+if(isAltPressed) {
+saveAsAction();
+} else saveAction();
+}
+}
+case KeyEvent.VK_O: {
+openAction();
+}
+case KeyEvent.VK_F4: {
+exitAction();
+}
+case KeyEvent.VK_TAB: {
+if(isCtrlPressed) {
+if(tabbedPane.getSelectedComponent() == employeePanel) {
+tabbedPane.setSelectedComponent(animalPanel);
+}
+}
+}
+}
+
+this.requestFocus();
+}

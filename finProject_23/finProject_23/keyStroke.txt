@@ -1,0 +1,49 @@
+Yes you would add a keylistener. 
+Inside your trigger for your listener, you can pass the KeyEvent to a secondary method to encapsulate the logic, 
+then act appropriately.
+
+isCheatCode(KeyEvent e) {
+    if(e.getKeyCode() == KeyEvent.VK_W) {
+        int mods = e.getModifiers();
+        return (mods & InputEvent.ALT_MASK != 0)
+        && mods & InputEvent.CTRL_MASK != 0;
+    }
+    return false;
+}
+
+
+
+
+You have to use a create an Action for the KeyStroke. But for Windows I found this library very helpful.
+
+    {
+        KeyStroke cancelKeyStroke = KeyStroke
+                .getKeyStroke((char) KeyEvent.VK_ESCAPE);
+        Keymap map = JTextComponent.getKeymap(JTextComponent.DEFAULT_KEYMAP);
+        map.addActionForKeyStroke(cancelKeyStroke, cancelKeyAction);
+    }
+    private static Action cancelKeyAction = new AbstractAction() {
+        public void actionPerformed(ActionEvent ae) {
+            Component comp = (Component) ae.getSource();
+            Window window = SwingUtilities.windowForComponent(comp);
+            if (window instanceof Dialog) {
+                window.dispose();
+            } else if (comp instanceof JTextComponent
+                    && !(comp instanceof JFormattedTextField)) {
+                JTextComponent tc = (JTextComponent) comp;
+                int end = tc.getSelectionEnd();
+                if (tc.getSelectionStart() != end) {
+                    tc.setCaretPosition(end);
+                }
+            }
+        }
+    };
+
+
+// play is a jButton but can be any component in the window
+play.getInputMap(play.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_P, 0), "play");
+play.getActionMap().put("play", new AbstractAction() {
+public void actionPerformed(ActionEvent e) {
+  playActionPerformed(e);  // some function
+}
+});
