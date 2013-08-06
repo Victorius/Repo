@@ -46,6 +46,8 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
      this.mainPanel = new MainPanel();
      this.optionPanel = new OptionPanel();
      optionPanel.SetOptions(sqlClass);
+     optionPanel.setOptionH(optionHandler);
+     optionPanel.setPairH(pairHandler);
      this.getContentPane().add(optionPanel, BorderLayout.CENTER);
     
     saveDataItem.setBackground(Color.white);
