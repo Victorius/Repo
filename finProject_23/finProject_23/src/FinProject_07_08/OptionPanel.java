@@ -368,9 +368,9 @@ public class OptionPanel extends javax.swing.JPanel {
         try{
             Double option = 0.0;
             if(flag)
-                option=this.optionHandler.Call(inPrice, strPr, r2, days, vol);
+                option=this.optionHandler.Call(inPrice, strPr,r1, r2, days, vol);
             else
-                option=this.optionHandler.Put(inPrice, strPr, r2, days, vol);
+                option=this.optionHandler.Put(inPrice, strPr,r1, r2, days, vol);
             optPriceText.setText(String.valueOf(option));
         // if europ call
         //if (optTypeText.getText().equalsIgnoreCase("European Call")){
