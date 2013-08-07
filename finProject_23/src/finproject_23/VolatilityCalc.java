@@ -21,30 +21,30 @@ public class VolatilityCalc {
     private float sumPrice;
     private float sumAvPr;
     
-    private float averPrice; 
-    private float standDev; // standard deviation s 
-    private float volatValue;
+    private double averPrice=0.0; 
+    private double standDev=0.0; // standard deviation s 
+    private double volatValue=0.0;
     
  //public float calculateVolatility(int numObserv, float[] stockPriceArray, int numDays){
- public float calculateVolatility(int numObserv, ArrayList<Float> stockPriceArray, int numDays){    
+ public double calculateVolatility(int numObserv, ArrayList<Float> stockPriceArray, int numDays){    
      this.numObserv = numObserv;
      this.numDays = numDays;
      newPrices = new float[stockPriceArray.size()];
      averPrices=new float[stockPriceArray.size()];
      if (numObserv>0){
-          for (int i=1;i < numObserv+1; i++){
+          for (int i=1;i < stockPriceArray.size(); i++){
          
               //newPrices[i] += oldPrices[i];
               //float div = stockPriceArray.[i]/stockPriceArray[i-1];
-              float div = stockPriceArray.get(i)/stockPriceArray.get(i-1);
-              float u_i = (float)Math.log(div);
-              newPrices[i] = u_i * u_i;// u[i]*u[i]
-              averPrices[i] = u_i;// u[i] 
-              sumPrice += newPrices[i]; // sum (u[i]*u[i])
-              sumAvPr += averPrices[i]; // sum (u[i])
+              double div = stockPriceArray.get(i)/stockPriceArray.get(i-1);
+              double u_i = Math.log(stockPriceArray.get(i)/stockPriceArray.get(i-1));
+//              newPrices[i-1] = u_i * u_i;// u[i]*u[i]
+//              averPrices[i-1] = u_i;// u[i] 
+              sumPrice += (float)Math.log(div*div);//newPrices[i-1]; // sum (u[i]*u[i])
+              sumAvPr += u_i;//averPrices[i-1]; // sum (u[i])
           }
-         averPrice = (float) sumAvPr / numObserv; // average_u[i]
-         standDev = (float)Math.sqrt( (1/numObserv)*sumPrice - averPrice*averPrice );
+//         averPrice = (float) sumAvPr / numDays; // average_u[i]
+         standDev = Math.sqrt( (1/(numDays-1))*sumPrice - (1/(numDays*(numDays-1)))*sumAvPr*sumAvPr );
          volatValue = standDev / (float)Math.sqrt(numDays);
 
      System.out.println("Volatility is " + volatValue);
