@@ -2,7 +2,7 @@
  * Date 16/07/2013
  * 
  */
-package finproject_23;
+package FinProject_07_08;
 
 import PairHandlers.*;
 import handlersOption.*;
@@ -113,19 +113,19 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         helpMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/SourceImage/icon.png")));
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         fileMenu.setText("File");
 
         saveDataItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        saveDataItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/finproject_23/save.jpg"))); // NOI18N
+        saveDataItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SourceImage/save.jpg")));
         saveDataItem.setText("Save Data");
         fileMenu.add(saveDataItem);
 
         exitItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
-        exitItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/finproject_23/exit.jpg"))); // NOI18N
+        exitItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SourceImage/exit.jpg")));
         exitItem.setText("Exit");
         exitItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,7 +140,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         curPairMenu.setText("Currency Pair");
 
         eur_gbpItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, 0));
-        eur_gbpItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/finproject_23/eur_gbp1.jpg"))); // NOI18N
+        eur_gbpItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SourceImage/eur_gbp1.jpg")));
         eur_gbpItem.setText("EUR/GBP");
         eur_gbpItem.setSelected(true);
         eur_gbpItem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -156,7 +156,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         curPairMenu.add(eur_gbpItem);
 
         eur_jpyItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, 0));
-        eur_jpyItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/finproject_23/eur_jpy1.jpg"))); // NOI18N
+        eur_jpyItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SourceImage/eur_jpy1.jpg")));
         eur_jpyItem.setText("EUR/JPY");
         eur_jpyItem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -171,7 +171,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         curPairMenu.add(eur_jpyItem);
 
         eur_usdItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, 0));
-        eur_usdItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/finproject_23/eur_usd1.jpg"))); // NOI18N
+        eur_usdItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SourceImage/eur_usd1.jpg")));
         eur_usdItem.setText("EUR/USD");
         eur_usdItem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -186,7 +186,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         curPairMenu.add(eur_usdItem);
 
         gbp_usdItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, 0));
-        gbp_usdItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/finproject_23/gbp_usd1.jpg"))); // NOI18N
+        gbp_usdItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SourceImage/gbp_usd1.jpg")));
         gbp_usdItem.setText("GBP/USD");
         gbp_usdItem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -201,7 +201,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         curPairMenu.add(gbp_usdItem);
 
         gbp_jpyItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, 0));
-        gbp_jpyItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/finproject_23/gbp_jpy1.jpg"))); // NOI18N
+        gbp_jpyItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SourceImage/gbp_jpy1.jpg")));
         gbp_jpyItem.setText("GBP/JPY");
         gbp_jpyItem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -216,7 +216,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         curPairMenu.add(gbp_jpyItem);
 
         usd_jpyItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_6, 0));
-        usd_jpyItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/finproject_23/usd_jpy1.jpg"))); // NOI18N
+        usd_jpyItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SourceImage/usd_jpy1.jpg")));
         usd_jpyItem.setText("USD/JPY");
         usd_jpyItem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {

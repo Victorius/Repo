@@ -4,8 +4,8 @@
  */
 package PairHandlers;
 
-import finproject_23.DatabaseConnection;
-import finproject_23.SqlQueryClass;
+import FinProject_07_08.DatabaseConnection;
+import FinProject_07_08.SqlQueryClass;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

@@ -2,7 +2,7 @@
  * Date: 7/25/2013
  * Author: Anastasiia
  */
-package finproject_23;
+package FinProject_07_08;
 
 import PairHandlers.CommonHandlerForPair;
 import handlersOption.CommonHandler;

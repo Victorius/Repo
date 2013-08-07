@@ -3,7 +3,7 @@
  * version 1.0
  */
 
-package finproject_23;
+package FinProject_07_08;
 /**
  *
  * @author Anastasiia

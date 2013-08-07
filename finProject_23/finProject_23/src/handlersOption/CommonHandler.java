@@ -4,9 +4,9 @@
  */
 package handlersOption;
 
+import FinProject_07_08.SqlQueryClass;
 import cern.jet.random.Normal;
 import cern.jet.random.engine.RandomEngine;
-import finproject_23.*;
 import PairHandlers.CommonHandlerForPair;
 
 

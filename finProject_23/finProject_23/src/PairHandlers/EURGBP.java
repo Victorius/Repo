@@ -4,7 +4,7 @@
  */
 package PairHandlers;
 
-import finproject_23.DatabaseConnection;
+import FinProject_07_08.DatabaseConnection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

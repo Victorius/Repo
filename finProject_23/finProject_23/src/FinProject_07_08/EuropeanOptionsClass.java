@@ -2,7 +2,7 @@
  * DATE: 30/07/2013
  * version 1.0
  */
-package finproject_23;
+package FinProject_07_08;
 
 import JSci.maths.statistics.NormalDistribution;
 
