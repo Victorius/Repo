@@ -32,28 +32,25 @@ public class VolatilityCalc {
      newPrices = new float[stockPriceArray.size()];
      averPrices=new float[stockPriceArray.size()];
      if (numObserv>0){
-          for (int i=1;i < stockPriceArray.size(); i++){
-         
-              //newPrices[i] += oldPrices[i];
-              //float div = stockPriceArray.[i]/stockPriceArray[i-1];
-              double div = stockPriceArray.get(i)/stockPriceArray.get(i-1);
-              double u_i = Math.log(stockPriceArray.get(i)/stockPriceArray.get(i-1));
-//              newPrices[i-1] = u_i * u_i;// u[i]*u[i]
-//              averPrices[i-1] = u_i;// u[i] 
-              sumPrice += (float)Math.log(div*div);//newPrices[i-1]; // sum (u[i]*u[i])
-              sumAvPr += u_i;//averPrices[i-1]; // sum (u[i])
-          }
-//         averPrice = (float) sumAvPr / numDays; // average_u[i]
-         standDev = Math.sqrt( (1/(numDays-1))*sumPrice - (1/(numDays*(numDays-1)))*sumAvPr*sumAvPr );
-         volatValue = standDev / (float)Math.sqrt(numDays);
-
-     System.out.println("Volatility is " + volatValue);
-     return volatValue;
+        for(int i=1;i < stockPriceArray.size(); i++)
+            sumAvPr +=  Math.log(stockPriceArray.get(i)/stockPriceArray.get(i-1));
+	sumAvPr=sumAvPr/numDays;
+	for (int i=1;i < stockPriceArray.size(); i++){
+            double u_i = Math.log(stockPriceArray.get(i)/stockPriceArray.get(i-1));
+            sumPrice += (u_i-sumAvPr)*(u_i-sumAvPr);
+        }
+        volatValue= Math.sqrt(sumPrice/(numDays-1));
+        System.out.println("Volatility is " + volatValue);
+        return volatValue;
      } 
      else { 
          JOptionPane.showMessageDialog(null, "error", "Some errors are detected", JOptionPane.ERROR_MESSAGE);
          return 0;
      }
+ }
+ 
+ public double getVolatility(){
+     return this.volatValue;
  }
  
 }

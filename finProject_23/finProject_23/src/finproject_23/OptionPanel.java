@@ -397,6 +397,7 @@ public class OptionPanel extends javax.swing.JPanel {
       try{
           initPriceText.setText((String)this.pairHandler.getClosePrice(fromDate));
           volCalc.calculateVolatility(daysCount, this.pairHandler.getClosePrice(fromDate,toDate), daysCount);
+          volText.setText(String.valueOf(volCalc.getVolatility()));
       }catch(SQLException e){
         e.printStackTrace();
       }
