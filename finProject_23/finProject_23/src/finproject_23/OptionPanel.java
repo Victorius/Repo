@@ -29,6 +29,7 @@ public class OptionPanel extends javax.swing.JPanel {
   private CommonHandlerForPair pairHandler=new CommonHandlerForPair();
   private CommonHandler optionHandler = new CommonHandler();
   private int daysCount; // for maturity time
+  private boolean flag = true;
   
   public OptionPanel() {
     initComponents();
@@ -47,6 +48,8 @@ public class OptionPanel extends javax.swing.JPanel {
           this.eurClass = (EuropeanOptionsClass)parametres;
       }else if(parametres instanceof ForwardFuturesOptionClass){
           this.forFutClass = (ForwardFuturesOptionClass)parametres;
+      }else if(parametres instanceof Boolean){
+          this.flag = (boolean)parametres;
       }
   }
   
@@ -363,10 +366,16 @@ public class OptionPanel extends javax.swing.JPanel {
         
         // if input are numbers not string
         try{
+            Double option = 0.0;
+            if(flag)
+                option=this.optionHandler.Call(inPrice, strPr, r2, days, vol);
+            else
+                option=this.optionHandler.Put(inPrice, strPr, r2, days, vol);
+            optPriceText.setText(String.valueOf(option));
         // if europ call
         //if (optTypeText.getText().equalsIgnoreCase("European Call")){
         // call European Call and display in optionprice result text field
-        optPriceText.setText(String.valueOf(eurClass.europCall(days,inPrice, vol, r1, r2, strPr)));
+//        optPriceText.setText(String.valueOf(eurClass.europCall(days,inPrice, vol, r1, r2, strPr)));
         }
         catch(NumberFormatException e){
               JOptionPane.showMessageDialog(null, "Input proper double values", "Error", JOptionPane.ERROR);

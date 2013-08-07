@@ -18,6 +18,15 @@ public class CommonHandler {
     protected SqlQueryClass sqlClass=null;
     protected String optionName="EUROPEAN";
     
+    /**
+     * 
+     * @param S stock price
+     * @param X Strike price of option, price should be input by user
+     * @param r risk-free interest rate
+     * @param T - duration of counting
+     * @param a - volatility
+     * @return 
+     */
     public Double Call(double S,double X, double r, double T,double a){
         Normal n = new Normal(0.0,1.0,RandomEngine.makeDefault());
         Double d1 = (Math.log(S/X)+(r+a*a/2)/T)/(a*Math.sqrt(T));
@@ -26,8 +35,12 @@ public class CommonHandler {
         return res;
     }
     
-    public Object[] Put(){
-        return new Object[0];
+    public Double Put(double S,double X, double r, double T,double a){
+        Normal n = new Normal(0.0,1.0,RandomEngine.makeDefault());
+        Double d1 = (Math.log(S/X)+(r+a*a/2)/T)/(a*Math.sqrt(T));
+        Double d2 = d1-a*Math.sqrt(T);
+        Double res = X*(Math.pow(Math.E, -r*T))*n.cdf(-d2)-S*n.cdf(-d1);
+        return res;
     }    
 
     
