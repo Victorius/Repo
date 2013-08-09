@@ -6,6 +6,7 @@ package FinProject_07_08;
 
 import PairHandlers.CommonHandlerForPair;
 import handlersOption.CommonHandler;
+import helpful_package.Checker;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,12 +31,36 @@ public class OptionPanel extends javax.swing.JPanel {
   private CommonHandler optionHandler = new CommonHandler();
   private int daysCount; // for maturity time
   private boolean flag = true;
+  private boolean changedDate = false;
+  private Checker thread = new Checker(this);
   
   public OptionPanel() {
     initComponents();
-    
-    
-    date1Choice.setDate(Calendar.getInstance().getTime());
+      date1Choice.setDate(Calendar.getInstance().getTime());
+//      Thread gh = new Thread(thread);
+//      gh.start();
+  }
+  
+  /**
+   * Method is about checking the correct period of choosen time
+   * @return boolean
+   */
+  public boolean getFlag(){
+      return changedDate;
+  }
+  /**
+   * Method is about checking the correct period of choosen time
+   * @param flag 
+   */
+  public void setFlag(boolean flag){
+      changedDate = flag;
+  }
+  
+  public com.toedter.calendar.JDateChooser getDate(boolean firstOrSecond){
+      if(firstOrSecond)
+          return this.date1Choice;
+      else
+          return this.date2Choice;
   }
   
   public void SetOptions(Object parametres){
@@ -399,41 +424,26 @@ public class OptionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_optPriceBtnActionPerformed
 
     private void volatBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volatBtnActionPerformed
-      if(date2Choice.getDate()!=null){
-      SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");  
-      boolean formatted = false;
-      String fromDate = format.format(date1Choice.getDate()); // format in Db
-      String toDate = format.format(date2Choice.getDate());// format in Db
-      int daysCount =  (int) ((date2Choice.getDate().getTime() - date1Choice.getDate().getTime()) / (1000*60*60*24));
-      dayCountText.setText(String.valueOf(daysCount));
-      try{
-          initPriceText.setText((String)this.pairHandler.getClosePrice(fromDate));
-          volCalc.calculateVolatility(daysCount, this.pairHandler.getClosePrice(fromDate,toDate), daysCount);
-          volText.setText(String.valueOf(volCalc.getVolatility()));
-      }catch(SQLException e){
-        e.printStackTrace();
-      }
-      
-//    if (formatted){
-//        int daysCount =  (int) ((date2.getTime() - date1.getTime()) / (1000*60*60*24));
-//        dayCountText.setText(String.valueOf(daysCount));
-//        if(sqlClass!=null){
-//            System.out.println(sqlClass.getClPrice_EurGbp(fromDate));
-//            initPriceText.setText(sqlClass.getClPrice_EurGbp(fromDate));
-//        }else{
-////            sqlClass = new SqlQueryClass("","","");
-//        }
-//            
-//        
-//        ArrayList<Float> stockPrices = new ArrayList<Float>();
-//        if(sqlClass!=null){
-//            stockPrices = sqlClass.getDataforVol_EurGbp(fromDate); // for array
-//            System.out.println(stockPrices.toArray());
-//            volCalc.calculateVolatility(daysCount, stockPrices, daysCount);
-//        }
-//      }
-    }else{
+      if(date2Choice.getDate()!=null && date1Choice.getDate()!=null && date2Choice.getDate().after(date1Choice.getDate())){
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");  
+        boolean formatted = false;
+        String fromDate = format.format(date1Choice.getDate()); // format in Db
+        String toDate = format.format(date2Choice.getDate());// format in Db
+        int daysCount =  (int) ((date2Choice.getDate().getTime() - date1Choice.getDate().getTime()) / (1000*60*60*24));
+        dayCountText.setText(String.valueOf(daysCount));
+        try{
+            initPriceText.setText((String)this.pairHandler.getClosePrice(fromDate));
+            volCalc.calculateVolatility(daysCount, this.pairHandler.getClosePrice(fromDate,toDate), daysCount);
+            volText.setText(String.valueOf(volCalc.getVolatility()));
+        }catch(SQLException e){
+          e.printStackTrace();
+        }
+    }else if(date2Choice.getDate()==null){
           JOptionPane.showMessageDialog(null, "Choice end of date period","Error", JOptionPane.ERROR_MESSAGE);
+      }else if(date1Choice.getDate()==null){
+          JOptionPane.showMessageDialog(null, "Choice begin of date period","Error", JOptionPane.ERROR_MESSAGE);
+      }else if(date2Choice.getDate().before(date1Choice.getDate())){
+          JOptionPane.showMessageDialog(null, "Choice correct date \"From\" and \"To\". The date \"From\" should be before date \"To\"","Error", JOptionPane.ERROR_MESSAGE);
       }
    
     }//GEN-LAST:event_volatBtnActionPerformed
@@ -444,6 +454,7 @@ public class OptionPanel extends javax.swing.JPanel {
         //daysCount =  (int) ((d2.getTime() - d1.getTime()) / (1000*60*60*24));
         //
         dayCountText.setText(String.valueOf(daysCount));
+        System.out.println("changed");
     }//GEN-LAST:event_date2ChoiceInputMethodTextChanged
 
     private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed
