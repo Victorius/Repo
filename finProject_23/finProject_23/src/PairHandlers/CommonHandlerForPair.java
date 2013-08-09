@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author Admin
  */
 public class CommonHandlerForPair {    
-    protected String CurrPair="EUR/GBP";
+    protected String CurrPair="";
     protected DatabaseConnection dbc = null;
     
     public CommonHandlerForPair(){}

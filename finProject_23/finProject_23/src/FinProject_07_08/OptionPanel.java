@@ -9,9 +9,7 @@ import handlersOption.CommonHandler;
 import helpful_package.Checker;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -383,43 +381,29 @@ public class OptionPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void optPriceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optPriceBtnActionPerformed
-        double inPrice = Double.parseDouble(initPriceText.getText());
-        double vol = Double.parseDouble(volText.getText());
-        double r1 = Double.parseDouble(r1Text.getText());
-        double r2 = Double.parseDouble(r2Text.getText());
-        double strPr = Double.parseDouble(strikePrText.getText());
-        int days = Integer.parseInt(dayCountText.getText());
-        System.out.println("init Price " + inPrice + " volat " + vol + " risk dom + " + r1 + " risk for + " + r2 +
-                           " strike " + strPr + " days " + days);
-        
-        // if input are numbers not string
-        try{
-            Double option = 0.0;
-            if(flag)
-                option=this.optionHandler.Call(inPrice, strPr,r1, r2, days, vol);
-            else
-                option=this.optionHandler.Put(inPrice, strPr,r1, r2, days, vol);
-            optPriceText.setText(String.valueOf(option));
-        // if europ call
-        //if (optTypeText.getText().equalsIgnoreCase("European Call")){
-        // call European Call and display in optionprice result text field
-//        optPriceText.setText(String.valueOf(eurClass.europCall(days,inPrice, vol, r1, r2, strPr)));
-        }
-        catch(NumberFormatException e){
-              JOptionPane.showMessageDialog(null, "Input proper double values", "Error", JOptionPane.ERROR);
-        }
+        if(this.optionHandler.getOptionName().length()>0){
+            double inPrice = Double.parseDouble(initPriceText.getText());
+            double vol = Double.parseDouble(volText.getText());
+            double r1 = Double.parseDouble(r1Text.getText());
+            double r2 = Double.parseDouble(r2Text.getText());
+            double strPr = Double.parseDouble(strikePrText.getText());
+            int days = Integer.parseInt(dayCountText.getText());
+            System.out.println("init Price " + inPrice + " volat " + vol + " risk dom + " + r1 + " risk for + " + r2 +
+                               " strike " + strPr + " days " + days);
 
-        //}
-        //else if (optTypeText.getText().equalsIgnoreCase("European Put")){
-            // european put
-        //optPriceText.setText(String.valueOf(eurClass.europPut(days,inPrice, vol, r1, r2, strPr)));    
-        //}
-        //else if(optTypeText.getText().equalsIgnoreCase("Futures options")){
-         //optPriceText.setText(String.valueOf(forFutClass.getFuturesOpPrice(days, r1, r2, inPrice)));  
-        //}else if(optTypeText.getText().equalsIgnoreCase("Forwards options")){
-         //optPriceText.setText(String.valueOf(forFutClass.getForwardPrice(days, r1, r2, strPr)));  
-        //}
-        
+            // if input are numbers not string
+            try{
+                Double option = 0.0;
+                if(flag)
+                    option=this.optionHandler.Call(inPrice, strPr,r1, r2, days, vol);
+                else
+                    option=this.optionHandler.Put(inPrice, strPr,r1, r2, days, vol);
+                optPriceText.setText(String.valueOf(option));
+            }
+            catch(NumberFormatException e){
+                  JOptionPane.showMessageDialog(null, "Input proper double values", "Error", JOptionPane.ERROR);
+            }
+        }
         
     }//GEN-LAST:event_optPriceBtnActionPerformed
 
