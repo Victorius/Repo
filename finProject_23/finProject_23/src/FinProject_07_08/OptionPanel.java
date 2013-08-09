@@ -72,6 +72,7 @@ public class OptionPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel14 = new javax.swing.JLabel();
         mainTabPane = new javax.swing.JTabbedPane();
         optionTabPanel = new javax.swing.JPanel();
         resPanel = new javax.swing.JPanel();
@@ -81,7 +82,7 @@ public class OptionPanel extends javax.swing.JPanel {
         curPairPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         curPairText = new javax.swing.JTextField();
-        inputBtn = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         optTypeText = new javax.swing.JTextField();
         resetBtn = new javax.swing.JButton();
@@ -111,6 +112,8 @@ public class OptionPanel extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         grTabPanel = new javax.swing.JPanel();
+
+        jLabel14.setText("jLabel14");
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setLayout(new java.awt.BorderLayout());
@@ -159,7 +162,7 @@ public class OptionPanel extends javax.swing.JPanel {
         jLabel1.setBackground(new java.awt.Color(0, 51, 51));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 51));
-        jLabel1.setText("CURRENCY PAIR:");
+        jLabel1.setText("   CURRENCY PAIR:");
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         curPairPanel.add(jLabel1);
 
@@ -170,16 +173,11 @@ public class OptionPanel extends javax.swing.JPanel {
         curPairText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         curPairText.setText("EUR/GBP");
         curPairPanel.add(curPairText);
-
-        inputBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        inputBtn.setText("INPUT DATA");
-        inputBtn.setActionCommand("input");
-        inputBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        curPairPanel.add(inputBtn);
+        curPairPanel.add(jLabel15);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 51));
-        jLabel2.setText("OPTION TYPE:");
+        jLabel2.setText("   OPTION TYPE:");
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         curPairPanel.add(jLabel2);
 
@@ -195,6 +193,11 @@ public class OptionPanel extends javax.swing.JPanel {
         resetBtn.setText("RESET DATA");
         resetBtn.setActionCommand("reset");
         resetBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        resetBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetBtnActionPerformed(evt);
+            }
+        });
         curPairPanel.add(resetBtn);
 
         optionTabPanel.add(curPairPanel, java.awt.BorderLayout.NORTH);
@@ -210,10 +213,10 @@ public class OptionPanel extends javax.swing.JPanel {
         date2Choice.setMaxSelectableDate(new java.util.Date(1420074119000L));
         date2Choice.setMinSelectableDate(new java.util.Date(978483719000L));
         date2Choice.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 date2ChoiceInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         opPanel.add(date2Choice, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 110, 20));
@@ -443,6 +446,20 @@ public class OptionPanel extends javax.swing.JPanel {
         dayCountText.setText(String.valueOf(daysCount));
     }//GEN-LAST:event_date2ChoiceInputMethodTextChanged
 
+    private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed
+        optTypeText.setText("");
+        curPairText.setText("");
+        date1Choice.setDate(null);
+        date2Choice.setDate(null);
+        dayCountText.setText("");
+        initPriceText.setText("");
+        volText.setText("");
+        r1Text.setText("");
+        r2Text.setText("");
+        infoTextArea.setText("");
+        strikePrText.setText("");
+    }//GEN-LAST:event_resetBtnActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel curPairPanel;
     private javax.swing.JTextField curPairText;
@@ -452,12 +469,13 @@ public class OptionPanel extends javax.swing.JPanel {
     private javax.swing.JPanel grTabPanel;
     private javax.swing.JTextArea infoTextArea;
     private javax.swing.JTextField initPriceText;
-    private javax.swing.JButton inputBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
