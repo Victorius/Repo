@@ -6,6 +6,7 @@ package helpful_package;
 
 import cern.jet.random.Normal;
 import cern.jet.random.engine.RandomEngine;
+import handlersOption.AmericanOption;
 import handlersOption.CommonHandler;
 import handlersOption.EuropeanOption;
 import java.io.BufferedReader;
@@ -27,10 +28,12 @@ public class test4test {
 //        ch.Call();
 //        System.out.println(ch.getCurrencyPair());
         Normal n = new Normal(0.0,1.0,RandomEngine.makeDefault());
-        System.out.println(n.cdf(-0.3253));
-        CommonHandler optionHandler = new CommonHandler();
-        double x =optionHandler.Call(1.56, 1.6,0.06, 0.08, 0.5, 0.12);
-        x=optionHandler.Put(1.56, 1.6,0.06, 0.08, 0.5, 0.12);
+//        System.out.println(n.cdf(-0.3253));
+        AmericanOption optionHandler = new AmericanOption(2);
+        Double x =0.0;//optionHandler.Call(1.56, 1.6,0.06, 0.08, 0.5, 0.12);
+        optionHandler.setdt(0.5);
+        x=optionHandler.Call(1.15, 1.15,0.012, 0.022, 0.5, 0.1);
+        
         System.out.println(x);
 //        File f = new File("D:\\temp\\data2Nastya\\historical data\\AUD-USD\\AUDUSD_Candlestick_1_M_ASK_01.03.2008-01.03.2012.csv");
 //        FileReader fr = new FileReader(f);
