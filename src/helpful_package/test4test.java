@@ -17,10 +17,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- *
- * @author Admin
- */
 public class test4test {
     public static void main(String[] args) throws FileNotFoundException, IOException{
         CommonHandler ch = new CommonHandler();

@@ -4,10 +4,6 @@
  */
 package PairHandlers;
 
-/**
- *
- * @author Admin
- */
 public class GBPJPY  extends CommonHandlerForPair{
     public GBPJPY(){
         this.CurrPair="GBP/JPY";

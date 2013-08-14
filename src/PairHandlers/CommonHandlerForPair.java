@@ -18,11 +18,23 @@ public class CommonHandlerForPair {
     public CommonHandlerForPair(DatabaseConnection dbc){
         this.dbc = dbc;
     }
+    /**
+     * Метод возвращает название валют в панель.
+     * @return 
+     */
     public String getCurrpair(){
         return this.CurrPair;
     }
     
-    public Object getClosePrice(String FromDate) throws SQLException{
+    /**
+     * Метод для получения значения close_price в один день;
+     * Используется для заполненияя поля Stock_price.
+     * 
+     * @param FromDate
+     * @return
+     * @throws SQLException 
+     */
+    public String getClosePrice(String FromDate) throws SQLException{
         if(dbc!=null){
             ResultSet rs = dbc.getData("SELECT close_price FROM HISTORICAL_DATA.EUR_GBP WHERE DAY_DATE=\'"+FromDate+"\';");
             if(rs.next())
@@ -32,7 +44,14 @@ public class CommonHandlerForPair {
         }else
             return null;
     }
-    
+    /**
+     * Метод для вычисления волатильности, когда мы выбираем данные из диапозона, который
+     * выбираем в дата_чузерах.
+     * @param FromDate
+     * @param ToDate
+     * @return
+     * @throws SQLException 
+     */
     public ArrayList<Float> getClosePrice(String FromDate,String ToDate)throws SQLException{
         if(dbc!=null){
             ResultSet rs = dbc.getData("SELECT close_price FROM HISTORICAL_DATA.EUR_GBP WHERE DAY_DATE BETWEEN \'"+FromDate+"\' AND \'"+ToDate+"\';");
@@ -45,11 +64,19 @@ public class CommonHandlerForPair {
             return null;
     }
     
+    /**
+     * Метод для присвоения экземпляру класса существующее соединения в базе данных
+     * @param dbc 
+     */
     public void setDBConn(DatabaseConnection dbc){
         this.dbc=dbc;
         
     }
     
+    /**
+     * Метод возвращает соеиднение к базе данных данного экземпляра класса.
+     * @return 
+     */
     public DatabaseConnection getDB(){
         return this.dbc;
     }

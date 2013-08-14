@@ -9,10 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- * @author Admin
- */
 public class EURGBP extends CommonHandlerForPair{
     
 
@@ -22,7 +18,7 @@ public class EURGBP extends CommonHandlerForPair{
     }
     
     @Override
-    public Object getClosePrice(String FromDate) throws SQLException{
+    public String getClosePrice(String FromDate) throws SQLException{
         if(dbc!=null){
             ResultSet rs = dbc.getData("SELECT close_price FROM HISTORICAL_DATA.EUR_GBP WHERE DAY_DATE="+FromDate+";");
             if(rs.next())

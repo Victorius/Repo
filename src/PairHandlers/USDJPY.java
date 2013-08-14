@@ -4,10 +4,6 @@
  */
 package PairHandlers;
 
-/**
- *
- * @author Admin
- */
 public class USDJPY extends CommonHandlerForPair{
 
     public USDJPY(){

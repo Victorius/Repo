@@ -4,10 +4,6 @@
  */
 package PairHandlers;
 
-/**
- *
- * @author Admin
- */
 public class EURUSD extends CommonHandlerForPair{
     public EURUSD(){
         this.CurrPair="EUR/USD";

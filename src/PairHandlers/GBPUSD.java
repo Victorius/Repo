@@ -4,10 +4,6 @@
  */
 package PairHandlers;
 
-/**
- *
- * @author Admin
- */
 public class GBPUSD extends CommonHandlerForPair{
     public GBPUSD(){
         this.CurrPair="GBP/USD";

@@ -6,10 +6,6 @@ package helpful_package;
 
 import FinProject_07_08.OptionPanel;
 
-/**
- *
- * @author Admin
- */
 public class Checker implements Runnable{
 private java.util.Date prevFirstDate=null,prevSecondDate=null;
 private OptionPanel op=null;
