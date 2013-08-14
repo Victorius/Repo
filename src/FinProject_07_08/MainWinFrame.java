@@ -523,13 +523,13 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
     }//GEN-LAST:event_europPutItemActionPerformed
 
     private void amerCallItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amerCallItemActionPerformed
-        this.optionHandler = new AmericanOption();
+        this.optionHandler = new AmericanOption(5);
         this.flag=true;
         refresh();
     }//GEN-LAST:event_amerCallItemActionPerformed
 
     private void amerPutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amerPutItemActionPerformed
-        this.optionHandler = new AmericanOption();
+        this.optionHandler = new AmericanOption(5);
         this.flag=false;
         refresh();
     }//GEN-LAST:event_amerPutItemActionPerformed

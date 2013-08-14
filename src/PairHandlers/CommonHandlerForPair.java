@@ -10,10 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- * @author Admin
- */
 public class CommonHandlerForPair {    
     protected String CurrPair="";
     protected DatabaseConnection dbc = null;

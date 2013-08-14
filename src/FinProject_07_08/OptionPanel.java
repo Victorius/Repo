@@ -12,10 +12,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author 1210081
- */
 public class OptionPanel extends javax.swing.JPanel {
 
   /**
@@ -98,13 +94,21 @@ public class OptionPanel extends javax.swing.JPanel {
   public void setStockPrice(){
     
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");  
+        String s1 = date1Choice.getDate().toString();
         String fromDate = format.format(date1Choice.getDate()); // format in Db
+        
         try {
+            String sd=(String)this.pairHandler.getClosePrice(fromDate);
             initPriceText.setText((String)this.pairHandler.getClosePrice(fromDate));
         } catch (SQLException ex) {
   //          Logger.getLogger(OptionPanel.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Some problems in second thread");
         }
+  }
+  
+  public void setClearFields(){
+      this.dayCountText.setText("");
+      this.initPriceText.setText("");
   }
   
   @SuppressWarnings("unchecked")
@@ -469,6 +473,8 @@ public class OptionPanel extends javax.swing.JPanel {
         r2Text.setText("");
         infoTextArea.setText("");
         strikePrText.setText("");
+        this.pairHandler = new CommonHandlerForPair(this.pairHandler.getDB());
+        this.optionHandler = new CommonHandler();
     }//GEN-LAST:event_resetBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
