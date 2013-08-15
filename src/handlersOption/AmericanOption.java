@@ -7,15 +7,17 @@ package handlersOption;
 
 public class AmericanOption extends CommonHandler{    
     public Double[][] S,v;
-    private Double  dt=0.0;
+    private Double  dt=2.0;
     public AmericanOption(int N){
-        S = new Double[N][N];
-        v= new Double[N][N];
+        
         this.optionName="AMERICAN";
     }
     
     @Override
     public Double Call(double S,double X, double r,double rf, double T,double a){
+        int N= (int)Math.round(T/dt);
+        this.S = new Double[N][N];
+        v= new Double[N][N];
         fillTreeS(S,a,dt);
         for(int i=0;i<this.S.length;i++){
             v[this.S.length-1][i]=call(X,this.S.length-1,i);
@@ -31,6 +33,9 @@ public class AmericanOption extends CommonHandler{
     
     @Override
     public Double Put(double S,double X, double r,double rf, double T,double a){        
+        int N= (int)Math.round(T/dt);
+        this.S = new Double[N][N];
+        v= new Double[N][N];
         fillTreeS(S,a,dt);
         for(int i=0;i<this.S.length;i++){
             v[this.S.length-1][i]=put(X,this.S.length-1,i);

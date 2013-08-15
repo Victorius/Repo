@@ -302,6 +302,11 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
                 forwOpItemMouseReleased(evt);
             }
         });
+        forwOpItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                forwOpItemActionPerformed(evt);
+            }
+        });
         opTypeMenu.add(forwOpItem);
 
         futurOpItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_6, java.awt.event.InputEvent.CTRL_MASK));
@@ -309,6 +314,11 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         futurOpItem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 futurOpItemMouseReleased(evt);
+            }
+        });
+        futurOpItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                futurOpItemActionPerformed(evt);
             }
         });
         opTypeMenu.add(futurOpItem);
@@ -536,6 +546,17 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         this.flag=false;
         refresh();
     }//GEN-LAST:event_amerPutItemActionPerformed
+
+    private void forwOpItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forwOpItemActionPerformed
+        this.optionHandler = new ForwardOption();        
+        refresh();
+    }//GEN-LAST:event_forwOpItemActionPerformed
+
+    private void futurOpItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_futurOpItemActionPerformed
+        this.optionHandler = new FuturesOption();
+        this.flag=false;
+        refresh();
+    }//GEN-LAST:event_futurOpItemActionPerformed
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
