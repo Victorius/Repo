@@ -16,28 +16,19 @@ public class CommonHandler {
     
     /**
      * 
-     * @param S stock price
-     * @param X Strike price of option, price should be input by user
-     * @param r risk-free interest rate
-     * @param T - duration of counting
-     * @param a - volatility
+     * @param S   stock price
+     * @param X   Strike price of option, price should be input by user
+     * @param r   domestic risk-free rate
+     * @param r_f foreign risk-free rate
+     * @param T   time to maturity
+     * @param a   volatility
      * @return 
      */
     public Double Call(double S,double X, double r,double rf, double T,double a){
-//        Normal n = new Normal(0.0,10.0,RandomEngine.makeDefault());
-//        Double d1 = (Math.log(S/X)+(r-rf+a*a/2)*T)/(a*Math.sqrt(T));
-//        Double d2 = d1-a*Math.sqrt(T);
-//        Double res = S*Math.pow(Math.E, -rf*T)*n.cdf(d1)-X*Math.pow(Math.E, -r*T)*n.cdf(d2);
-//        return res;
         return 0.0;
     }
     
     public Double Put(double S,double X, double r,double rf, double T,double a){
-//        Normal n = new Normal(0.0,10.0,RandomEngine.makeDefault());
-//        Double d1 = (Math.log(S/X)+(r-rf+a*a/2)*T)/(a*Math.sqrt(T));
-//        Double d2 = d1-a*Math.sqrt(T);
-//        Double res = X*(Math.pow(Math.E, -r*T))*n.cdf(-d2)-S*(Math.pow(Math.E, -rf*T))*n.cdf(-d1);
-//        return res;
         return 0.0;
     }    
     

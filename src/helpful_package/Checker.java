@@ -31,10 +31,6 @@ private OptionPanel op=null;
                             op.setCountOsDays(daysCount);
                             op.setStockPrice();
                         }
-                        
-                    }else{
-//                        if(prevFirstDate.compareTo(FirstDate)!=0 || prevSecondDate.compareTo(SecondDate)!=0)
-//                            op.setClearFields();
                     }
                     prevFirstDate=FirstDate;
                     prevSecondDate=SecondDate;

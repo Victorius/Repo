@@ -19,8 +19,8 @@ public class FinProject_23 {
         MainWinFrame frame = new MainWinFrame();
         frame.setVisible(true);
         frame.setTitle("Option Pricing Model");
-        frame.setPreferredSize(new Dimension(750, 550));
-        frame.setMinimumSize(new Dimension(800,540));
-        frame.setMaximumSize(new Dimension (900, 600));
+        frame.setPreferredSize(new Dimension(750, 570));
+        frame.setMinimumSize(new Dimension(800,570));
+        frame.setMaximumSize(new Dimension (900, 800));
   }
 }

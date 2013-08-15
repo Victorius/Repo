@@ -19,7 +19,7 @@ public class CommonHandlerForPair {
         this.dbc = dbc;
     }
     /**
-     * Метод возвращает название валют в панель.
+     * method returns name of cur pair to Panel
      * @return 
      */
     public String getCurrpair(){
@@ -27,8 +27,8 @@ public class CommonHandlerForPair {
     }
     
     /**
-     * Метод для получения значения close_price в один день;
-     * Используется для заполненияя поля Stock_price.
+     * method for getting close_price value - matching one day;
+     * used to fill in the field of Stock_price.
      * 
      * @param FromDate
      * @return
@@ -45,8 +45,7 @@ public class CommonHandlerForPair {
             return null;
     }
     /**
-     * Метод для вычисления волатильности, когда мы выбираем данные из диапозона, который
-     * выбираем в дата_чузерах.
+     * method for calculating volatility - when choosing data from the range of dates (fromDate and toDate)
      * @param FromDate
      * @param ToDate
      * @return
@@ -65,7 +64,8 @@ public class CommonHandlerForPair {
     }
     
     /**
-     * Метод для присвоения экземпляру класса существующее соединения в базе данных
+     * 
+     * method for assigning the existing database connection to class
      * @param dbc 
      */
     public void setDBConn(DatabaseConnection dbc){
@@ -74,7 +74,8 @@ public class CommonHandlerForPair {
     }
     
     /**
-     * Метод возвращает соеиднение к базе данных данного экземпляра класса.
+     * 
+     * method returns database connection of class
      * @return 
      */
     public DatabaseConnection getDB(){
@@ -84,3 +85,4 @@ public class CommonHandlerForPair {
     
     
 }
+
