@@ -77,10 +77,13 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         this.optionPanel.changePairName(this.pairHandler.getCurrpair());
         this.optionPanel.setOptionH(optionHandler);
         if(this.optionHandler.getOptionName().length()>0)
-            if(this.flag)
-                this.optionPanel.changeOptionName(this.optionHandler.getOptionName()+" CALL");
-            else
-                this.optionPanel.changeOptionName(this.optionHandler.getOptionName()+" PUT");
+            if(this.optionHandler.getOptionName().contains("EUROPEAN") || this.optionHandler.getOptionName().contains("AMERICAN"))
+                if(this.flag)
+                    this.optionPanel.changeOptionName(this.optionHandler.getOptionName()+" CALL");
+                else
+                    this.optionPanel.changeOptionName(this.optionHandler.getOptionName()+" PUT");
+             else
+                this.optionPanel.changeOptionName(this.optionHandler.getOptionName());
         this.optionPanel.SetOptions(flag);
     }
  

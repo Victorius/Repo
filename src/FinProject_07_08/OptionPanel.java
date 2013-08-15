@@ -94,7 +94,8 @@ public class OptionPanel extends javax.swing.JPanel {
   public void setStockPrice(){
     
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");  
-        String s1 = date1Choice.getDate().toString();
+        System.out.println(date1Choice.getDate());
+        String s1 = date1Choice.getDate().toString();        
         String fromDate = format.format(date1Choice.getDate()); // format in Db
         
         try {

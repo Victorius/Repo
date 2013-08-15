@@ -5,6 +5,8 @@
 package helpful_package;
 
 import FinProject_07_08.OptionPanel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Checker implements Runnable{
 private java.util.Date prevFirstDate=null,prevSecondDate=null;
@@ -15,6 +17,7 @@ private OptionPanel op=null;
     @Override
     public void run() {
         while(true){
+            synchronized(op){
                 if(op.getDate(true)!=null && op.getDate(false)!=null){                    
                     java.util.Date FirstDate =op.getDate(true).getDate();
                     java.util.Date SecondDate =op.getDate(false).getDate();
@@ -37,6 +40,7 @@ private OptionPanel op=null;
                     prevSecondDate=SecondDate;
                 }
             }
+                        }
     }
     
 }
