@@ -8,6 +8,7 @@ import cern.jet.random.Normal;
 import cern.jet.random.engine.RandomEngine;
 
 public class EuropeanOption extends CommonHandler{
+    
     public EuropeanOption(){
         this.optionName="EUROPEAN";
     }

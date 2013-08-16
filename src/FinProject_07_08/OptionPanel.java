@@ -7,6 +7,7 @@ package FinProject_07_08;
 import PairHandlers.CommonHandlerForPair;
 import handlersOption.CommonHandler;
 import helpful_package.Checker;
+import helpful_package.SecondChecker;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -33,6 +34,9 @@ public class OptionPanel extends javax.swing.JPanel {
       date1Choice.setDate(Calendar.getInstance().getTime());
       Thread gh = new Thread(thread);
       gh.start();
+      SecondChecker sc = new SecondChecker(gh,thread);
+      Thread gh2 =new Thread(sc);
+      gh2.start();
   }
   
   /**

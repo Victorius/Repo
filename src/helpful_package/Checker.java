@@ -16,7 +16,8 @@ private OptionPanel op=null;
     }
     @Override
     public void run() {
-        while(true){
+        try{
+            while(true){
             synchronized(op){
                 if(op.getDate(true)!=null && op.getDate(false)!=null){                    
                     java.util.Date FirstDate =op.getDate(true).getDate();
@@ -36,7 +37,10 @@ private OptionPanel op=null;
                     prevSecondDate=SecondDate;
                 }
             }
-                        }
+        }
+        }catch(Exception e){
+            System.out.println("I am broken");
+        }
     }
     
 }

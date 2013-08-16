@@ -7,12 +7,10 @@ package handlersOption;
 import cern.jet.random.Normal;
 import cern.jet.random.engine.RandomEngine;
 
-/**
- *
- * @author Admin
- */
+
 public class AsianOption extends CommonHandler{
-    public void AsianOption(){
+
+    public AsianOption(){
         this.optionName="ASIAN";
     }
     
