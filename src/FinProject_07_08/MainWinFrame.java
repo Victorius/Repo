@@ -31,7 +31,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
     private CommonHandler optionHandler = new CommonHandler();
     private boolean flag = true;
     // main Panel 
-    private MainPanel mainPanel;
+    
 
     private OptionPanel optionPanel;
     
@@ -43,7 +43,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
     // declares objects of frame
 
     // adds mainPanel to frame
-     this.mainPanel = new MainPanel();
+
      this.optionPanel = new OptionPanel();
      optionPanel.SetOptions(sqlClass);
      optionPanel.setOptionH(optionHandler);
@@ -77,7 +77,8 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         this.optionPanel.changePairName(this.pairHandler.getCurrpair());
         this.optionPanel.setOptionH(optionHandler);
         if(this.optionHandler.getOptionName().length()>0)
-            if(this.optionHandler.getOptionName().contains("EUROPEAN") || this.optionHandler.getOptionName().contains("AMERICAN"))
+            if(this.optionHandler.getOptionName().contains("EUROPEAN") || this.optionHandler.getOptionName().contains("AMERICAN") ||
+                    this.optionHandler.getOptionName().contains("ASIAN"))
                 if(this.flag)
                     this.optionPanel.changeOptionName(this.optionHandler.getOptionName()+" CALL");
                 else
@@ -112,12 +113,14 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         forwOpItem = new javax.swing.JMenuItem();
         futurOpItem = new javax.swing.JMenuItem();
         advTypeMenu = new javax.swing.JMenu();
-        exotTypeItem = new javax.swing.JMenuItem();
+        asianCallTypeItem = new javax.swing.JMenuItem();
+        asianPutTypeItem = new javax.swing.JMenuItem();
         graphMenu = new javax.swing.JMenu();
         helpMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/SourceImage/icon.png")));
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -327,8 +330,21 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
 
         advTypeMenu.setText("Advanced Options");
 
-        exotTypeItem.setText("Excotic options");
-        advTypeMenu.add(exotTypeItem);
+        asianCallTypeItem.setText("Asian Call");
+        asianCallTypeItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asianCallTypeItemActionPerformed(evt);
+            }
+        });
+        advTypeMenu.add(asianCallTypeItem);
+
+        asianPutTypeItem.setText("Asian Put");
+        asianPutTypeItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asianPutTypeItemActionPerformed(evt);
+            }
+        });
+        advTypeMenu.add(asianPutTypeItem);
 
         jMenuBar1.add(advTypeMenu);
 
@@ -558,11 +574,25 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         refresh();
     }//GEN-LAST:event_futurOpItemActionPerformed
 
+    private void asianCallTypeItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asianCallTypeItemActionPerformed
+        this.optionHandler = new AsianOption();
+        this.flag=true;
+        refresh();
+    }//GEN-LAST:event_asianCallTypeItemActionPerformed
+
+    private void asianPutTypeItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asianPutTypeItemActionPerformed
+        this.optionHandler = new AsianOption();
+        this.flag=false;
+        refresh();
+    }//GEN-LAST:event_asianPutTypeItemActionPerformed
+
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu advTypeMenu;
     private javax.swing.JMenuItem amerCallItem;
     private javax.swing.JMenuItem amerPutItem;
+    private javax.swing.JMenuItem asianCallTypeItem;
+    private javax.swing.JMenuItem asianPutTypeItem;
     private javax.swing.JMenu curPairMenu;
     private javax.swing.JMenuItem eur_gbpItem;
     private javax.swing.JMenuItem eur_jpyItem;
@@ -570,7 +600,6 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
     private javax.swing.JMenuItem europCallItem;
     private javax.swing.JMenuItem europPutItem;
     private javax.swing.JMenuItem exitItem;
-    private javax.swing.JMenuItem exotTypeItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenuItem forwOpItem;
     private javax.swing.JMenuItem futurOpItem;

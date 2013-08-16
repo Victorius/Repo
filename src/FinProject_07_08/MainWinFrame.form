@@ -227,10 +227,21 @@
             <Property name="text" type="java.lang.String" value="Advanced Options"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="exotTypeItem">
+            <MenuItem class="javax.swing.JMenuItem" name="asianCallTypeItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Excotic options"/>
+                <Property name="text" type="java.lang.String" value="Asian Call"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="asianCallTypeItemActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="asianPutTypeItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Asian Put"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="asianPutTypeItemActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
