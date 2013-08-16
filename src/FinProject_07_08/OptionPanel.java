@@ -36,14 +36,14 @@ public class OptionPanel extends javax.swing.JPanel {
   }
   
   /**
-   * Method is about checking the correct period of choosen time
+   * Method is about checking the correct period of chosen time
    * @return boolean
    */
   public boolean getFlag(){
       return changedDate;
   }
   /**
-   * Method is about checking the correct period of choosen time
+   * Method is about checking the correct period of chosen time
    * @param flag 
    */
   public void setFlag(boolean flag){
@@ -117,6 +117,8 @@ public class OptionPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel14 = new javax.swing.JLabel();
+        optBtnGr = new javax.swing.ButtonGroup();
+        curBtnGrp = new javax.swing.ButtonGroup();
         mainTabPane = new javax.swing.JTabbedPane();
         optionTabPanel = new javax.swing.JPanel();
         resPanel = new javax.swing.JPanel();
@@ -155,7 +157,27 @@ public class OptionPanel extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        buyOptRadBtn = new javax.swing.JRadioButton();
+        SellOptRadBtn = new javax.swing.JRadioButton();
         grTabPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jRadioButton5 = new javax.swing.JRadioButton();
+        jRadioButton6 = new javax.swing.JRadioButton();
+        jLabel17 = new javax.swing.JLabel();
+        date3Choice = new com.toedter.calendar.JDateChooser();
+        jLabel18 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jSeparator3 = new javax.swing.JSeparator();
+        jPanel2 = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox();
+        jButton2 = new javax.swing.JButton();
 
         jLabel14.setText("jLabel14");
 
@@ -169,7 +191,7 @@ public class OptionPanel extends javax.swing.JPanel {
 
         resPanel.setBackground(new java.awt.Color(255, 255, 255));
         resPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        resPanel.setPreferredSize(new java.awt.Dimension(552, 50));
+        resPanel.setPreferredSize(new java.awt.Dimension(552, 70));
         resPanel.setLayout(new java.awt.GridLayout(1, 3, 4, 5));
 
         jLabel3.setBackground(new java.awt.Color(153, 255, 204));
@@ -200,7 +222,7 @@ public class OptionPanel extends javax.swing.JPanel {
         curPairPanel.setBackground(new java.awt.Color(204, 204, 255));
         curPairPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         curPairPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        curPairPanel.setPreferredSize(new java.awt.Dimension(552, 70));
+        curPairPanel.setPreferredSize(new java.awt.Dimension(552, 100));
         curPairPanel.setLayout(new java.awt.GridLayout(2, 3, 8, 10));
 
         jLabel1.setBackground(new java.awt.Color(0, 51, 51));
@@ -248,7 +270,7 @@ public class OptionPanel extends javax.swing.JPanel {
 
         opPanel.setBackground(new java.awt.Color(204, 204, 255));
         opPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        opPanel.setPreferredSize(new java.awt.Dimension(552, 100));
+        opPanel.setPreferredSize(new java.awt.Dimension(552, 200));
         opPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         date2Choice.setBackground(new java.awt.Color(153, 153, 153));
@@ -263,7 +285,7 @@ public class OptionPanel extends javax.swing.JPanel {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
-        opPanel.add(date2Choice, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 110, 20));
+        opPanel.add(date2Choice, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 110, 20));
 
         date1Choice.setBackground(new java.awt.Color(153, 153, 153));
         date1Choice.setAutoscrolls(true);
@@ -271,17 +293,17 @@ public class OptionPanel extends javax.swing.JPanel {
         date1Choice.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         date1Choice.setMaxSelectableDate(new java.util.Date(1420074119000L));
         date1Choice.setMinSelectableDate(new java.util.Date(978483719000L));
-        opPanel.add(date1Choice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 110, 20));
+        opPanel.add(date1Choice, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 110, 20));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("Select dates of option:");
         jLabel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        opPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 30));
+        opPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 40));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("-");
-        opPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 60, 10, 20));
+        opPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 10, 20));
 
         volatBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         volatBtn.setForeground(new java.awt.Color(0, 0, 51));
@@ -293,7 +315,7 @@ public class OptionPanel extends javax.swing.JPanel {
                 volatBtnActionPerformed(evt);
             }
         });
-        opPanel.add(volatBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 240, 50));
+        opPanel.add(volatBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 230, 50));
 
         optPriceBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         optPriceBtn.setForeground(new java.awt.Color(0, 0, 51));
@@ -305,49 +327,49 @@ public class OptionPanel extends javax.swing.JPanel {
                 optPriceBtnActionPerformed(evt);
             }
         });
-        opPanel.add(optPriceBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 200, 50));
+        opPanel.add(optPriceBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 220, 50));
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel6.setText("Stock Price:");
-        opPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 110, 20));
+        opPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 110, 20));
 
         initPriceText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        opPanel.add(initPriceText, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 110, 20));
+        opPanel.add(initPriceText, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 110, 20));
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel7.setText("Volatility:");
-        opPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 90, 20));
+        opPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 90, 20));
 
         volText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         volText.setText("0.0043");
-        opPanel.add(volText, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 110, 20));
+        opPanel.add(volText, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 110, 20));
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel8.setText("Maturity time:");
-        opPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 120, 20));
+        opPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 120, 20));
 
         dayCountText.setEditable(false);
         dayCountText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        opPanel.add(dayCountText, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 110, 20));
+        opPanel.add(dayCountText, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 110, 20));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setText("Risk-free rate");
-        opPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 130, 20));
+        opPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 130, 20));
 
         r1Text.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         r1Text.setText("0.03");
-        opPanel.add(r1Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 80, 20));
+        opPanel.add(r1Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 80, 20));
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel10.setText("Risk-free rate");
-        opPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 110, 20));
+        opPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 110, 20));
 
         r2Text.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         r2Text.setText("0.04");
-        opPanel.add(r2Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 80, -1));
+        opPanel.add(r2Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 80, -1));
 
         jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detailed Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 14), new java.awt.Color(51, 0, 0))); // NOI18N
 
@@ -357,44 +379,153 @@ public class OptionPanel extends javax.swing.JPanel {
         infoTextArea.setText("\nEuropean Call Option\n is an option of:");
         jScrollPane1.setViewportView(infoTextArea);
 
-        opPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, 200, 250));
+        opPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 220, 300));
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel11.setText("Strike price:");
-        opPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, -1));
+        opPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, -1, -1));
 
         strikePrText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         strikePrText.setText("0.644");
-        opPanel.add(strikePrText, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 80, -1));
+        strikePrText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                strikePrTextActionPerformed(evt);
+            }
+        });
+        opPanel.add(strikePrText, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 80, -1));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        opPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 0, 10, 320));
+        opPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 0, 10, 550));
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        opPanel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 10, 320));
+        opPanel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 10, 550));
 
         jLabel12.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jLabel12.setText("domestic currency:");
-        opPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, 20));
+        opPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, -1, 20));
 
         jLabel13.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jLabel13.setText("foreign currency:");
-        opPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 130, 20));
+        opPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 130, 20));
+
+        buyOptRadBtn.setBackground(new java.awt.Color(204, 204, 255));
+        optBtnGr.add(buyOptRadBtn);
+        buyOptRadBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        buyOptRadBtn.setSelected(true);
+        buyOptRadBtn.setText("Buy an option");
+        opPanel.add(buyOptRadBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 130, -1));
+
+        SellOptRadBtn.setBackground(new java.awt.Color(204, 204, 255));
+        optBtnGr.add(SellOptRadBtn);
+        SellOptRadBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        SellOptRadBtn.setText("Sell an option");
+        opPanel.add(SellOptRadBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 130, -1));
 
         optionTabPanel.add(opPanel, java.awt.BorderLayout.CENTER);
 
         mainTabPane.addTab("Option Pricing", optionTabPanel);
 
-        javax.swing.GroupLayout grTabPanelLayout = new javax.swing.GroupLayout(grTabPanel);
-        grTabPanel.setLayout(grTabPanelLayout);
-        grTabPanelLayout.setHorizontalGroup(
-            grTabPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
-        );
-        grTabPanelLayout.setVerticalGroup(
-            grTabPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 445, Short.MAX_VALUE)
-        );
+        grTabPanel.setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(761, 300));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel16.setText("Choose the currency pair:");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 190, 20));
+
+        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
+        curBtnGrp.add(jRadioButton1);
+        jRadioButton1.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("EUR/GBP");
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+
+        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
+        curBtnGrp.add(jRadioButton2);
+        jRadioButton2.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        jRadioButton2.setText("EUR/JPY");
+        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, -1));
+
+        jRadioButton3.setBackground(new java.awt.Color(255, 255, 255));
+        curBtnGrp.add(jRadioButton3);
+        jRadioButton3.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        jRadioButton3.setText("EUR/USD");
+        jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, -1, -1));
+
+        jRadioButton4.setBackground(new java.awt.Color(255, 255, 255));
+        curBtnGrp.add(jRadioButton4);
+        jRadioButton4.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        jRadioButton4.setText("GBP/JPY");
+        jPanel1.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 80, -1));
+
+        jRadioButton5.setBackground(new java.awt.Color(255, 255, 255));
+        curBtnGrp.add(jRadioButton5);
+        jRadioButton5.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        jRadioButton5.setText("GBP/USD");
+        jPanel1.add(jRadioButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, -1));
+
+        jRadioButton6.setBackground(new java.awt.Color(255, 255, 255));
+        curBtnGrp.add(jRadioButton6);
+        jRadioButton6.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        jRadioButton6.setText("USD/JPY");
+        jPanel1.add(jRadioButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 80, -1));
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel17.setText("Input the date:");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 120, 20));
+
+        date3Choice.setBackground(new java.awt.Color(153, 153, 153));
+        date3Choice.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        date3Choice.setAutoscrolls(true);
+        date3Choice.setDate(Calendar.getInstance().getTime());
+        date3Choice.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        date3Choice.setMaxSelectableDate(new java.util.Date(1420074119000L));
+        date3Choice.setMinSelectableDate(new java.util.Date(978483719000L));
+        jPanel1.add(date3Choice, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 110, 20));
+
+        jLabel18.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel18.setText("OPTION DETAILS:");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 140, 30));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setText("CALCULATE");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 30, 150, 30));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 410, 180));
+
+        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 10, 300));
+
+        grTabPanel.add(jPanel1, java.awt.BorderLayout.NORTH);
+
+        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(761, 400));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jComboBox1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "OptionsGraph", "HistoricalVolatility" }));
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 130, 30));
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton2.setText("Build Graph");
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 140, 30));
+
+        grTabPanel.add(jPanel2, java.awt.BorderLayout.CENTER);
 
         mainTabPane.addTab("Ghaph representation", grTabPanel);
 
@@ -402,7 +533,8 @@ public class OptionPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void optPriceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optPriceBtnActionPerformed
-        if(this.optionHandler.getOptionName().length()>0){
+        if(this.optionHandler.getOptionName().length()>0 && dayCountText.getText().length()>0 && initPriceText.getText().length()>0 
+                && r1Text.getText().length()>0 && r2Text.getText().length()>0 && strikePrText.getText().length()>0){
             double inPrice = Double.parseDouble(initPriceText.getText());
             double vol = Double.parseDouble(volText.getText());
             double r1 = Double.parseDouble(r1Text.getText());
@@ -415,17 +547,22 @@ public class OptionPanel extends javax.swing.JPanel {
             // if input are numbers not string
             try{
                 Double option = 0.0;
-                if(flag)
+             if(this.optionHandler.getOptionName().contains("EUROPEAN") || this.optionHandler.getOptionName().contains("AMERICAN"))
+                if(this.flag)
                     option=this.optionHandler.Call(inPrice, strPr,r1, r2, days, vol);
                 else
                     option=this.optionHandler.Put(inPrice, strPr,r1, r2, days, vol);
+             else
+                option=this.optionHandler.Put(inPrice, strPr,r1, r2, days, vol);
+
+                    
                 optPriceText.setText(String.valueOf(option));
             }
             catch(NumberFormatException e){
                   JOptionPane.showMessageDialog(null, "Input proper double values", "Error", JOptionPane.ERROR);
             }
-        }
-        
+        }else 
+            JOptionPane.showMessageDialog(null, "Please, fill all reqirement fileds on form", "Error", JOptionPane.ERROR);
     }//GEN-LAST:event_optPriceBtnActionPerformed
 
     private void volatBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volatBtnActionPerformed
@@ -444,11 +581,11 @@ public class OptionPanel extends javax.swing.JPanel {
           e.printStackTrace();
         }
     }else if(date2Choice.getDate()==null){
-          JOptionPane.showMessageDialog(null, "Choice end of date period","Error", JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(null, "Choose the first date of option period, please","Error", JOptionPane.ERROR_MESSAGE);
       }else if(date1Choice.getDate()==null){
-          JOptionPane.showMessageDialog(null, "Choice begin of date period","Error", JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(null, "Choose the last date of option period, please","Error", JOptionPane.ERROR_MESSAGE);
       }else if(date2Choice.getDate().before(date1Choice.getDate())){
-          JOptionPane.showMessageDialog(null, "Choice correct date \"From\" and \"To\". The date \"From\" should be before date \"To\"","Error", JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(null, "Choose correct dates \"From\" and \"To\"! The date \"From\" should be before date \"To\"","Error", JOptionPane.ERROR_MESSAGE);
       }
    
     }//GEN-LAST:event_volatBtnActionPerformed
@@ -478,15 +615,26 @@ public class OptionPanel extends javax.swing.JPanel {
         this.optionHandler = new CommonHandler();
     }//GEN-LAST:event_resetBtnActionPerformed
 
+    private void strikePrTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_strikePrTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_strikePrTextActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton SellOptRadBtn;
+    private javax.swing.JRadioButton buyOptRadBtn;
+    private javax.swing.ButtonGroup curBtnGrp;
     private javax.swing.JPanel curPairPanel;
     private javax.swing.JTextField curPairText;
     private com.toedter.calendar.JDateChooser date1Choice;
     private com.toedter.calendar.JDateChooser date2Choice;
+    private com.toedter.calendar.JDateChooser date3Choice;
     private javax.swing.JTextField dayCountText;
     private javax.swing.JPanel grTabPanel;
     private javax.swing.JTextArea infoTextArea;
     private javax.swing.JTextField initPriceText;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -494,6 +642,9 @@ public class OptionPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -502,11 +653,23 @@ public class OptionPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButton5;
+    private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTabbedPane mainTabPane;
     private javax.swing.JPanel opPanel;
+    private javax.swing.ButtonGroup optBtnGr;
     private javax.swing.JButton optPriceBtn;
     private javax.swing.JTextField optPriceText;
     private javax.swing.JTextField optTypeText;
