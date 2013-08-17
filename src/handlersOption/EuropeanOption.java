@@ -11,6 +11,7 @@ public class EuropeanOption extends CommonHandler{
     
     public EuropeanOption(){
         this.optionName="EUROPEAN";
+        this.DefinitionOfOption="This is European option type.";
     }
     
     

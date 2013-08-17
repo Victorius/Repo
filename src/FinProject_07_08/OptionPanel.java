@@ -95,6 +95,10 @@ public class OptionPanel extends javax.swing.JPanel {
       dayCountText.setText(String.valueOf(count));
   }
   
+  public void setInfoAboutOption(String text){
+      infoTextArea.setText(text);
+  }
+  
   public void setStockPrice(){
     
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");  
@@ -109,6 +113,29 @@ public class OptionPanel extends javax.swing.JPanel {
   //          Logger.getLogger(OptionPanel.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Some problems in second thread");
         }
+  }
+  
+  public boolean canICalculateOption(){
+      try{
+          Double x = Double.parseDouble(r1Text.getText());
+          x = Double.parseDouble(r2Text.getText());
+          x = Double.parseDouble(strikePrText.getText());
+          x = Double.parseDouble(volText.getText());
+          
+          return true&&canICalculateVol();
+      }catch(NumberFormatException e){
+          return false;
+      }
+  }
+  
+  public boolean canICalculateVol(){
+      try{
+          Double x = Double.parseDouble(initPriceText.getText());
+          x = Double.parseDouble(dayCountText.getText());
+          return true;
+      }catch(NumberFormatException e){
+          return false;
+      }
   }
   
   public void setClearFields(){
@@ -241,7 +268,6 @@ public class OptionPanel extends javax.swing.JPanel {
         curPairText.setFont(new java.awt.Font("Century Gothic", 2, 14)); // NOI18N
         curPairText.setForeground(new java.awt.Color(0, 51, 51));
         curPairText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        curPairText.setText("EUR/GBP");
         curPairPanel.add(curPairText);
         curPairPanel.add(jLabel15);
 
@@ -256,7 +282,6 @@ public class OptionPanel extends javax.swing.JPanel {
         optTypeText.setFont(new java.awt.Font("Century Gothic", 2, 14)); // NOI18N
         optTypeText.setForeground(new java.awt.Color(0, 51, 51));
         optTypeText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        optTypeText.setText("EUROPEAN CALL");
         curPairPanel.add(optTypeText);
 
         resetBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -537,8 +562,7 @@ public class OptionPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void optPriceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optPriceBtnActionPerformed
-        if(this.optionHandler.getOptionName().length()>0 && dayCountText.getText().length()>0 && initPriceText.getText().length()>0 
-                && r1Text.getText().length()>0 && r2Text.getText().length()>0 && strikePrText.getText().length()>0){
+        if(this.optionHandler.getOptionName().length()>0 && canICalculateOption()){
             double inPrice = Double.parseDouble(initPriceText.getText());
             double vol = Double.parseDouble(volText.getText());
             double r1 = Double.parseDouble(r1Text.getText());
@@ -558,19 +582,18 @@ public class OptionPanel extends javax.swing.JPanel {
                     option=this.optionHandler.Put(inPrice, strPr,r1, r2, days, vol);
              else
                 option=this.optionHandler.Put(inPrice, strPr,r1, r2, days, vol);
-
-                    
                 optPriceText.setText(String.valueOf(option));
             }
             catch(NumberFormatException e){
-                  JOptionPane.showMessageDialog(null, "Input proper double values", "Error", JOptionPane.ERROR);
+                  JOptionPane.showMessageDialog(null, "Input proper double values", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }else 
-            JOptionPane.showMessageDialog(null, "Please, fill all reqirement fileds on form", "Error", JOptionPane.ERROR);
+            JOptionPane.showMessageDialog(null, "Please, correctly fill all requirement fileds","Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_optPriceBtnActionPerformed
 
     private void volatBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volatBtnActionPerformed
-      if(date2Choice.getDate()!=null && date1Choice.getDate()!=null && date2Choice.getDate().after(date1Choice.getDate())){
+      if(date2Choice.getDate()!=null && date1Choice.getDate()!=null && date2Choice.getDate().after(date1Choice.getDate()) &&
+              canICalculateVol()){
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");  
         boolean formatted = false;
         String fromDate = format.format(date1Choice.getDate()); // format in Db
@@ -590,6 +613,8 @@ public class OptionPanel extends javax.swing.JPanel {
           JOptionPane.showMessageDialog(null, "Choose the last date of option period, please","Error", JOptionPane.ERROR_MESSAGE);
       }else if(date2Choice.getDate().before(date1Choice.getDate())){
           JOptionPane.showMessageDialog(null, "Choose correct dates \"From\" and \"To\"! The date \"From\" should be before date \"To\"","Error", JOptionPane.ERROR_MESSAGE);
+      }else if(!canICalculateVol()){
+          JOptionPane.showMessageDialog(null, "Please, correctly fill all requirement fileds","Error", JOptionPane.ERROR_MESSAGE);
       }
    
     }//GEN-LAST:event_volatBtnActionPerformed

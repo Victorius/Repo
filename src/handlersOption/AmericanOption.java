@@ -9,8 +9,8 @@ public class AmericanOption extends CommonHandler{
     public Double[][] S,v;
     private Double  dt=2.0;
     public AmericanOption(int N){
-        
         this.optionName="AMERICAN";
+        this.DefinitionOfOption="This is American option type.";
     }
     
     @Override

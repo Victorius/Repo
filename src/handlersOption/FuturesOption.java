@@ -11,6 +11,7 @@ package handlersOption;
 public class FuturesOption extends CommonHandler{
     public FuturesOption(){
         this.optionName="FUTURES";
+        this.DefinitionOfOption="This is Future option type.";
     }
     
     @Override

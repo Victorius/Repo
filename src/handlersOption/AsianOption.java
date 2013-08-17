@@ -12,6 +12,7 @@ public class AsianOption extends CommonHandler{
 
     public AsianOption(){
         this.optionName="ASIAN";
+        this.DefinitionOfOption="This is Asian option type.";
     }
     
     @Override

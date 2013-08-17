@@ -13,7 +13,7 @@ import PairHandlers.CommonHandlerForPair;
 public class CommonHandler {
     protected SqlQueryClass sqlClass=null;
     protected String optionName="";
-    
+    protected String DefinitionOfOption = "";
     /**
      * 
      * @param S   stock price
@@ -31,7 +31,10 @@ public class CommonHandler {
     public Double Put(double S,double X, double r,double rf, double T,double a){
         return 0.0;
     }    
-    
+
+    public String getDefinitionOfOption(){
+        return this.DefinitionOfOption;
+    }
 
     public String getOptionName(){
         return this.optionName;
@@ -44,4 +47,6 @@ public class CommonHandler {
     public void setOption(CommonHandlerForPair pair,SqlQueryClass db){
         this.sqlClass=db;        
     }
+    
+
 }

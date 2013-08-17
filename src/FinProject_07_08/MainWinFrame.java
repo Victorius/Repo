@@ -86,6 +86,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
              else
                 this.optionPanel.changeOptionName(this.optionHandler.getOptionName());
         this.optionPanel.SetOptions(flag);
+        optionPanel.setInfoAboutOption(optionHandler.getDefinitionOfOption());
     }
  
     

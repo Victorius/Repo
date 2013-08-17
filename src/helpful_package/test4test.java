@@ -24,7 +24,10 @@ public class test4test {
         ch =new EuropeanOption();
 //        ch.Call();
 //        System.out.println(ch.getCurrencyPair());
-        Normal n = new Normal(0.0,1.0,RandomEngine.makeDefault());
+        Normal n = new Normal(0.0,100.0,RandomEngine.makeDefault());
+        System.out.println(n.cdf(86));
+        n = new Normal(0.0,1.0,RandomEngine.makeDefault());
+        System.out.println(n.cdf(0.86));
 //        System.out.println(n.cdf(-0.3253));
         CommonHandler optionHandler = new AsianOption();
         Double x =0.0;//optionHandler.Call(1.56, 1.6,0.06, 0.08, 0.5, 0.12);        

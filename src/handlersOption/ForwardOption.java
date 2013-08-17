@@ -8,6 +8,7 @@ package handlersOption;
 public class ForwardOption extends CommonHandler{
     public ForwardOption(){
         this.optionName="FORWARD";
+        this.DefinitionOfOption="This is Forward option type.";
     }
     
     @Override
