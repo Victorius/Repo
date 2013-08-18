@@ -67,8 +67,8 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
     europPutItem.setBackground(Color.white);
     amerCallItem.setBackground(Color.white);
     amerPutItem.setBackground(Color.white);
-    forwOpItem.setBackground(Color.white);
-    futurOpItem.setBackground(Color.white);
+    forwCallOpItem.setBackground(Color.white);
+    forwPutOpItem.setBackground(Color.white);
     
     }
     
@@ -111,8 +111,8 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         europPutItem = new javax.swing.JMenuItem();
         amerCallItem = new javax.swing.JMenuItem();
         amerPutItem = new javax.swing.JMenuItem();
-        forwOpItem = new javax.swing.JMenuItem();
-        futurOpItem = new javax.swing.JMenuItem();
+        forwCallOpItem = new javax.swing.JMenuItem();
+        forwPutOpItem = new javax.swing.JMenuItem();
         advTypeMenu = new javax.swing.JMenu();
         asianCallTypeItem = new javax.swing.JMenuItem();
         asianPutTypeItem = new javax.swing.JMenuItem();
@@ -121,7 +121,6 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/SourceImage/icon.png")));
-        getContentPane().setLayout(new java.awt.BorderLayout());
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -299,33 +298,33 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         });
         opTypeMenu.add(amerPutItem);
 
-        forwOpItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, java.awt.event.InputEvent.CTRL_MASK));
-        forwOpItem.setText("Forwards option");
-        forwOpItem.addMouseListener(new java.awt.event.MouseAdapter() {
+        forwCallOpItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, java.awt.event.InputEvent.CTRL_MASK));
+        forwCallOpItem.setText("Forwards Call");
+        forwCallOpItem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                forwOpItemMouseReleased(evt);
+                forwCallOpItemMouseReleased(evt);
             }
         });
-        forwOpItem.addActionListener(new java.awt.event.ActionListener() {
+        forwCallOpItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                forwOpItemActionPerformed(evt);
+                forwCallOpItemActionPerformed(evt);
             }
         });
-        opTypeMenu.add(forwOpItem);
+        opTypeMenu.add(forwCallOpItem);
 
-        futurOpItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_6, java.awt.event.InputEvent.CTRL_MASK));
-        futurOpItem.setText("Futures option");
-        futurOpItem.addMouseListener(new java.awt.event.MouseAdapter() {
+        forwPutOpItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_6, java.awt.event.InputEvent.CTRL_MASK));
+        forwPutOpItem.setText("Forwards Put");
+        forwPutOpItem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                futurOpItemMouseReleased(evt);
+                forwPutOpItemMouseReleased(evt);
             }
         });
-        futurOpItem.addActionListener(new java.awt.event.ActionListener() {
+        forwPutOpItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                futurOpItemActionPerformed(evt);
+                forwPutOpItemActionPerformed(evt);
             }
         });
-        opTypeMenu.add(futurOpItem);
+        opTypeMenu.add(forwPutOpItem);
 
         jMenuBar1.add(opTypeMenu);
 
@@ -452,8 +451,8 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
     europPutItem.setBackground(Color.white);
     amerCallItem.setBackground(Color.white);
     amerPutItem.setBackground(Color.white);
-    forwOpItem.setBackground(Color.white);
-    futurOpItem.setBackground(Color.white);
+    forwCallOpItem.setBackground(Color.white);
+    forwPutOpItem.setBackground(Color.white);
     //opTypeText.setEnabled(true);
     //opTypeText.setText("EUROPEAN CALL");
     //optionInfoText.setEnabled(true);
@@ -466,8 +465,8 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
     europCallItem.setBackground(Color.white);
     amerCallItem.setBackground(Color.white);
     amerPutItem.setBackground(Color.white);
-    forwOpItem.setBackground(Color.white);
-    futurOpItem.setBackground(Color.white);
+    forwCallOpItem.setBackground(Color.white);
+    forwPutOpItem.setBackground(Color.white);
     //opTypeText.setEnabled(true);
     //optionPanel.optTypeText.setText("EUROPEAN PUT");
     //optionInfoText.setEnabled(true);
@@ -480,8 +479,8 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
     europPutItem.setBackground(Color.white);
     amerCallItem.setBackground(Color.CYAN);
     amerPutItem.setBackground(Color.white);
-    forwOpItem.setBackground(Color.white);
-    futurOpItem.setBackground(Color.white);
+    forwCallOpItem.setBackground(Color.white);
+    forwPutOpItem.setBackground(Color.white);
     }//GEN-LAST:event_amerCallItemMouseReleased
 
     private void amerPutItemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_amerPutItemMouseReleased
@@ -490,29 +489,29 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
     europPutItem.setBackground(Color.CYAN);
     amerCallItem.setBackground(Color.white);
     amerPutItem.setBackground(Color.white);
-    forwOpItem.setBackground(Color.white);
-    futurOpItem.setBackground(Color.white);
+    forwCallOpItem.setBackground(Color.white);
+    forwPutOpItem.setBackground(Color.white);
     }//GEN-LAST:event_amerPutItemMouseReleased
 
-    private void forwOpItemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forwOpItemMouseReleased
+    private void forwCallOpItemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forwCallOpItemMouseReleased
     europCallItem.setBackground(Color.white);
     europCallItem.setBorderPainted(true);
     europPutItem.setBackground(Color.white);
     amerCallItem.setBackground(Color.white);
     amerPutItem.setBackground(Color.white);
-    forwOpItem.setBackground(Color.CYAN);
-    futurOpItem.setBackground(Color.white);
-    }//GEN-LAST:event_forwOpItemMouseReleased
+    forwCallOpItem.setBackground(Color.CYAN);
+    forwPutOpItem.setBackground(Color.white);
+    }//GEN-LAST:event_forwCallOpItemMouseReleased
 
-    private void futurOpItemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_futurOpItemMouseReleased
+    private void forwPutOpItemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forwPutOpItemMouseReleased
     europCallItem.setBackground(Color.white);
     europCallItem.setBorderPainted(true);
     europPutItem.setBackground(Color.white);
     amerCallItem.setBackground(Color.white);
     amerPutItem.setBackground(Color.white);
-    forwOpItem.setBackground(Color.white);
-    futurOpItem.setBackground(Color.CYAN);
-    }//GEN-LAST:event_futurOpItemMouseReleased
+    forwCallOpItem.setBackground(Color.white);
+    forwPutOpItem.setBackground(Color.CYAN);
+    }//GEN-LAST:event_forwPutOpItemMouseReleased
 
     private void eur_gbpItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eur_gbpItemActionPerformed
       System.out.println("123");
@@ -564,16 +563,16 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         refresh();
     }//GEN-LAST:event_amerPutItemActionPerformed
 
-    private void forwOpItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forwOpItemActionPerformed
+    private void forwCallOpItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forwCallOpItemActionPerformed
         this.optionHandler = new ForwardOption();        
         refresh();
-    }//GEN-LAST:event_forwOpItemActionPerformed
+    }//GEN-LAST:event_forwCallOpItemActionPerformed
 
-    private void futurOpItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_futurOpItemActionPerformed
+    private void forwPutOpItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forwPutOpItemActionPerformed
         this.optionHandler = new FuturesOption();
         this.flag=false;
         refresh();
-    }//GEN-LAST:event_futurOpItemActionPerformed
+    }//GEN-LAST:event_forwPutOpItemActionPerformed
 
     private void asianCallTypeItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asianCallTypeItemActionPerformed
         this.optionHandler = new AsianOption();
@@ -602,8 +601,8 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
     private javax.swing.JMenuItem europPutItem;
     private javax.swing.JMenuItem exitItem;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenuItem forwOpItem;
-    private javax.swing.JMenuItem futurOpItem;
+    private javax.swing.JMenuItem forwCallOpItem;
+    private javax.swing.JMenuItem forwPutOpItem;
     private javax.swing.JMenuItem gbp_jpyItem;
     private javax.swing.JMenuItem gbp_usdItem;
     private javax.swing.JMenu graphMenu;

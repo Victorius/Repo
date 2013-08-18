@@ -12,6 +12,11 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 public class OptionPanel extends javax.swing.JPanel {
 
@@ -28,15 +33,33 @@ public class OptionPanel extends javax.swing.JPanel {
   private boolean flag = true;
   private boolean changedDate = false;
   private Checker thread = new Checker(this);
+  private ChartFrame chartFrame = new ChartFrame("", null);
   
   public OptionPanel() {
-    initComponents();
+      initComponents();
       date1Choice.setDate(Calendar.getInstance().getTime());
       Thread gh = new Thread(thread);
       gh.start();
       SecondChecker sc = new SecondChecker(gh,thread);
       Thread gh2 =new Thread(sc);
       gh2.start();
+      
+//      DefaultPieDataset dataset = new DefaultPieDataset();
+//      dataset.setValue("Category 1", 43.2);
+//      dataset.setValue("Category 2", 76.2);
+//      dataset.setValue("Category 1", 10.9);
+//      JFreeChart jfc = ChartFactory.createPieChart("Sample",
+//                dataset,
+//                true,
+//                true,
+//                false);
+////      chartFrame = new ChartFrame("lol", jfc);      
+////      chartFrame.setBounds(10, 50, 300, 300);
+////      panel.setVisible(true);
+//      ChartPanel panel = new ChartPanel(jfc);
+//      panel.setBounds(10, 50, 300, 300);
+//      jPanel2.add(panel);
+      
   }
   
   /**
@@ -548,13 +571,13 @@ public class OptionPanel extends javax.swing.JPanel {
 
         jComboBox1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "OptionsGraph", "HistoricalVolatility" }));
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 130, 30));
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 30));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton2.setText("Build Graph");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 140, 30));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 140, 30));
 
-        grTabPanel.add(jPanel2, java.awt.BorderLayout.CENTER);
+        grTabPanel.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
         mainTabPane.addTab("Ghaph representation", grTabPanel);
 
