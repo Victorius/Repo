@@ -33,7 +33,7 @@ public class OptionPanel extends javax.swing.JPanel {
   private boolean flag = true;
   private boolean changedDate = false;
   private Checker thread = new Checker(this);
-  private ChartFrame chartFrame = new ChartFrame("", null);
+  private ChartPanel panel = new ChartPanel(null);
   
   public OptionPanel() {
       initComponents();
@@ -43,22 +43,17 @@ public class OptionPanel extends javax.swing.JPanel {
       SecondChecker sc = new SecondChecker(gh,thread);
       Thread gh2 =new Thread(sc);
       gh2.start();
-      
-//      DefaultPieDataset dataset = new DefaultPieDataset();
-//      dataset.setValue("Category 1", 43.2);
-//      dataset.setValue("Category 2", 76.2);
-//      dataset.setValue("Category 1", 10.9);
-//      JFreeChart jfc = ChartFactory.createPieChart("Sample",
-//                dataset,
-//                true,
-//                true,
-//                false);
-////      chartFrame = new ChartFrame("lol", jfc);      
-////      chartFrame.setBounds(10, 50, 300, 300);
-////      panel.setVisible(true);
-//      ChartPanel panel = new ChartPanel(jfc);
-//      panel.setBounds(10, 50, 300, 300);
-//      jPanel2.add(panel);
+      DefaultPieDataset dataset = new DefaultPieDataset();
+        dataset.setValue("Category 1", 43.2);
+        dataset.setValue("Category 2", 76.2);
+        dataset.setValue("Category 1", 10.9);
+        JFreeChart jfc = ChartFactory.createPieChart("Sample",
+                dataset,
+                true,
+                true,
+                false);
+        panel = new ChartPanel(jfc);
+      grTabPanel.add(panel);
       
   }
   
@@ -229,9 +224,8 @@ public class OptionPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jSeparator3 = new javax.swing.JSeparator();
-        jPanel2 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox();
         jButton2 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox();
 
         jLabel14.setText("jLabel14");
 
@@ -477,10 +471,11 @@ public class OptionPanel extends javax.swing.JPanel {
 
         mainTabPane.addTab("Option Pricing", optionTabPanel);
 
+        grTabPanel.setPreferredSize(new java.awt.Dimension(761, 706));
         grTabPanel.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(761, 300));
+        jPanel1.setPreferredSize(new java.awt.Dimension(761, 270));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -543,7 +538,7 @@ public class OptionPanel extends javax.swing.JPanel {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("CALCULATE");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 30, 150, 30));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, 150, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -558,26 +553,20 @@ public class OptionPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 410, 180));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 410, 180));
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 10, 300));
 
-        grTabPanel.add(jPanel1, java.awt.BorderLayout.NORTH);
-
-        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
-        jPanel2.setPreferredSize(new java.awt.Dimension(761, 400));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton2.setText("Build Graph");
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 140, 30));
 
         jComboBox1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "OptionsGraph", "HistoricalVolatility" }));
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 30));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 130, 30));
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("Build Graph");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 140, 30));
-
-        grTabPanel.add(jPanel2, java.awt.BorderLayout.PAGE_END);
+        grTabPanel.add(jPanel1, java.awt.BorderLayout.NORTH);
 
         mainTabPane.addTab("Ghaph representation", grTabPanel);
 
@@ -706,7 +695,6 @@ public class OptionPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
