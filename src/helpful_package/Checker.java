@@ -39,6 +39,7 @@ private OptionPanel op=null;
             }
         }
         }catch(Exception e){
+            e.printStackTrace();
             System.out.println("I am broken");
         }
     }

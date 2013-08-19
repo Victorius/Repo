@@ -27,8 +27,10 @@ public class VolatilityCalc {
     
  //public float calculateVolatility(int numObserv, float[] stockPriceArray, int numDays){
  public double calculateVolatility(int numObserv, ArrayList<Float> stockPriceArray, int numDays){    
+     this.volatValue=0.0;
      this.numObserv = numObserv;
      this.numDays = numDays;
+     sumAvPr=sumPrice=0;
      newPrices = new float[stockPriceArray.size()];
      averPrices=new float[stockPriceArray.size()];
      if (numObserv>0){
@@ -40,7 +42,6 @@ public class VolatilityCalc {
             sumPrice += (u_i-sumAvPr)*(u_i-sumAvPr);
         }
         volatValue= Math.sqrt(sumPrice/(numDays-1));
-        System.out.println("Volatility is " + volatValue);
         return volatValue;
      } 
      else { 

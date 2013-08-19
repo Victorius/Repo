@@ -27,8 +27,8 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
     private SqlQueryClass  sqlClass = null;
     private VolatilityCalc volCalc = null; // declare parametr of class
     private ResultSet mod = null;
-    private CommonHandlerForPair pairHandler=new CommonHandlerForPair();
-    private CommonHandler optionHandler = new CommonHandler();
+    private CommonHandlerForPair pairHandler=null;
+    private CommonHandler optionHandler = new EuropeanOption();
     private boolean flag = true;
     // main Panel 
     
@@ -39,12 +39,12 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
     initComponents();
     //sqlClass = new SqlQueryClass("db1210081_historical_data", "1210081", "1210081");
     sqlClass = new SqlQueryClass("historical_data", "root", "");    
-    pairHandler=new CommonHandlerForPair(sqlClass.getDB());
+    pairHandler=new EURGBP(sqlClass.getDB());
     // declares objects of frame
 
     // adds mainPanel to frame
 
-     this.optionPanel = new OptionPanel();
+     this.optionPanel = new OptionPanel(this);
      optionPanel.SetOptions(sqlClass);
      optionPanel.setOptionH(optionHandler);
      optionPanel.setPairH(pairHandler);
@@ -69,9 +69,13 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
     amerPutItem.setBackground(Color.white);
     forwCallOpItem.setBackground(Color.white);
     forwPutOpItem.setBackground(Color.white);
-    
+    refresh();
     }
     
+    public void setHandlers(CommonHandler ch, CommonHandlerForPair chfp){
+        this.optionHandler=ch;
+        this.pairHandler=chfp;
+    }
     public void refresh(){
         this.optionPanel.setPairH(pairHandler);
         this.optionPanel.changePairName(this.pairHandler.getCurrpair());

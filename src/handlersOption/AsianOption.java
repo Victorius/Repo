@@ -18,7 +18,7 @@ public class AsianOption extends CommonHandler{
     @Override
     public Double Call(double S,double X, double r,double rf, double T,double a){
         Normal n = new Normal(0.0,1.0,RandomEngine.makeDefault());
-        Double b=rf-r;
+        Double b=r-rf;
         Double ba = 0.5*(b-a*a/6);
         Double aa = a/Math.sqrt(3);
         Double d1 = (Math.log(S/X)+(ba+aa*aa*0.5)*T)/(aa*Math.sqrt(T));
@@ -30,7 +30,7 @@ public class AsianOption extends CommonHandler{
     @Override
     public Double Put(double S,double X, double r,double rf, double T,double a){
         Normal n = new Normal(0.0,1.0,RandomEngine.makeDefault());
-        Double b=rf-r;
+        Double b=r-rf;
         Double ba = 0.5*(b-a*a/6);
         Double aa = a/Math.sqrt(3);
         Double d1 = (Math.log(S/X)+(ba+aa*aa*0.5)*T)/(aa*Math.sqrt(T));

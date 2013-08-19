@@ -5,7 +5,9 @@
 package FinProject_07_08;
 
 import PairHandlers.CommonHandlerForPair;
+import PairHandlers.EURGBP;
 import handlersOption.CommonHandler;
+import handlersOption.EuropeanOption;
 import helpful_package.Checker;
 import helpful_package.SecondChecker;
 import java.sql.SQLException;
@@ -13,7 +15,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartFrame;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
@@ -27,17 +28,19 @@ public class OptionPanel extends javax.swing.JPanel {
   private VolatilityCalc volCalc = new VolatilityCalc(); // declare parametr of class
   private EuropeanOptionsClass eurClass = null;
   private ForwardFuturesOptionClass forFutClass = null;
-  private CommonHandlerForPair pairHandler=new CommonHandlerForPair();
-  private CommonHandler optionHandler = new CommonHandler();
+  private CommonHandlerForPair pairHandler=null;
+  private CommonHandler optionHandler =  new EuropeanOption();
   private int daysCount; // for maturity time
   private boolean flag = true;
   private boolean changedDate = false;
   private Checker thread = new Checker(this);
   private ChartPanel panel = new ChartPanel(null);
+  private MainWinFrame parent = null;
   
-  public OptionPanel() {
+  public OptionPanel(MainWinFrame frame) {
       initComponents();
       date1Choice.setDate(Calendar.getInstance().getTime());
+      parent = frame;
       Thread gh = new Thread(thread);
       gh.start();
       SecondChecker sc = new SecondChecker(gh,thread);
@@ -54,7 +57,6 @@ public class OptionPanel extends javax.swing.JPanel {
                 false);
         panel = new ChartPanel(jfc);
       grTabPanel.add(panel);
-      
   }
   
   /**
@@ -82,6 +84,8 @@ public class OptionPanel extends javax.swing.JPanel {
   public void SetOptions(Object parametres){
       if(parametres instanceof SqlQueryClass){
           this.sqlClass=(SqlQueryClass)parametres;
+          if(this.pairHandler==null)
+              this.pairHandler=new EURGBP(sqlClass.getDB());
           this.pairHandler.setDBConn(sqlClass.getDB());
       }else if(parametres instanceof VolatilityCalc){
           this.volCalc=(VolatilityCalc)parametres;
@@ -110,7 +114,8 @@ public class OptionPanel extends javax.swing.JPanel {
   }
   
   public void setCountOsDays(Integer count){
-      dayCountText.setText(String.valueOf(count));
+      if(this.pairHandler.getCurrpair().length()>0)
+        dayCountText.setText(String.valueOf(count));
   }
   
   public void setInfoAboutOption(String text){
@@ -118,19 +123,22 @@ public class OptionPanel extends javax.swing.JPanel {
   }
   
   public void setStockPrice(){
-    
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");  
-        System.out.println(date1Choice.getDate());
-        String s1 = date1Choice.getDate().toString();        
+    if(this.pairHandler.getCurrpair().length()>0){
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         String fromDate = format.format(date1Choice.getDate()); // format in Db
         
-        try {
-            String sd=(String)this.pairHandler.getClosePrice(fromDate);
-            initPriceText.setText((String)this.pairHandler.getClosePrice(fromDate));
+        try {            
+            String t = this.pairHandler.getClosePrice(fromDate);
+            initPriceText.setText(t==null?"Q":t);
+            if(t.equals("Q")){
+                JOptionPane.showMessageDialog(null, "In this date You have not some data","Error", JOptionPane.ERROR_MESSAGE);
+            }
         } catch (SQLException ex) {
   //          Logger.getLogger(OptionPanel.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Some problems in second thread");
         }
+        
+    }
   }
   
   public boolean canICalculateOption(){
@@ -242,7 +250,7 @@ public class OptionPanel extends javax.swing.JPanel {
         optionTabPanel.setLayout(new java.awt.BorderLayout());
 
         curPairPanel.setBackground(new java.awt.Color(204, 204, 255));
-        curPairPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        curPairPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(0));
         curPairPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         curPairPanel.setPreferredSize(new java.awt.Dimension(552, 100));
         curPairPanel.setLayout(new java.awt.GridLayout(2, 3, 8, 10));
@@ -299,10 +307,10 @@ public class OptionPanel extends javax.swing.JPanel {
         date2Choice.setMaxSelectableDate(new java.util.Date(1420074119000L));
         date2Choice.setMinSelectableDate(new java.util.Date(978483719000L));
         date2Choice.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 date2ChoiceInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         opPanel.add(date2Choice, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 110, 20));
@@ -319,7 +327,7 @@ public class OptionPanel extends javax.swing.JPanel {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("Select dates of option:");
         jLabel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        opPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 40));
+        opPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 170, 40));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("-");
@@ -335,7 +343,7 @@ public class OptionPanel extends javax.swing.JPanel {
                 volatBtnActionPerformed(evt);
             }
         });
-        opPanel.add(volatBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 230, 50));
+        opPanel.add(volatBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 230, 50));
 
         optPriceBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         optPriceBtn.setForeground(new java.awt.Color(0, 0, 51));
@@ -355,7 +363,7 @@ public class OptionPanel extends javax.swing.JPanel {
         opPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 110, 20));
 
         initPriceText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        opPanel.add(initPriceText, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 110, 20));
+        opPanel.add(initPriceText, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 110, 20));
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -364,7 +372,7 @@ public class OptionPanel extends javax.swing.JPanel {
 
         volText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         volText.setText("0.0043");
-        opPanel.add(volText, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 110, 20));
+        opPanel.add(volText, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 110, 20));
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -373,25 +381,25 @@ public class OptionPanel extends javax.swing.JPanel {
 
         dayCountText.setEditable(false);
         dayCountText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        opPanel.add(dayCountText, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 110, 20));
+        opPanel.add(dayCountText, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 110, 20));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setText("Risk-free rate");
-        opPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 130, 20));
+        opPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 130, 20));
 
         r1Text.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         r1Text.setText("0.03");
-        opPanel.add(r1Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 80, 20));
+        opPanel.add(r1Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 80, 20));
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel10.setText("Risk-free rate");
-        opPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 110, 20));
+        opPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 110, 20));
 
         r2Text.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         r2Text.setText("0.04");
-        opPanel.add(r2Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 80, -1));
+        opPanel.add(r2Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 80, -1));
 
-        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detailed Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 14), new java.awt.Color(51, 0, 0))); // NOI18N
+        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detailed Information", 0, 0, new java.awt.Font("Arial", 2, 14), new java.awt.Color(51, 0, 0))); // NOI18N
 
         infoTextArea.setEditable(false);
         infoTextArea.setColumns(16);
@@ -403,7 +411,7 @@ public class OptionPanel extends javax.swing.JPanel {
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel11.setText("Strike price:");
-        opPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, -1, -1));
+        opPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, -1, -1));
 
         strikePrText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         strikePrText.setText("0.644");
@@ -412,34 +420,34 @@ public class OptionPanel extends javax.swing.JPanel {
                 strikePrTextActionPerformed(evt);
             }
         });
-        opPanel.add(strikePrText, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 80, -1));
+        opPanel.add(strikePrText, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 80, -1));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        opPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 0, 10, 550));
+        opPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 10, 420));
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        opPanel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 10, 550));
+        opPanel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 10, 420));
 
         jLabel12.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jLabel12.setText("domestic currency:");
-        opPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, -1, 20));
+        opPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, -1, 20));
 
         jLabel13.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jLabel13.setText("foreign currency:");
-        opPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 130, 20));
+        opPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 130, 20));
 
         buyOptRadBtn.setBackground(new java.awt.Color(204, 204, 255));
         optBtnGr.add(buyOptRadBtn);
         buyOptRadBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         buyOptRadBtn.setSelected(true);
         buyOptRadBtn.setText("Buy an option");
-        opPanel.add(buyOptRadBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 130, -1));
+        opPanel.add(buyOptRadBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 130, -1));
 
         SellOptRadBtn.setBackground(new java.awt.Color(204, 204, 255));
         optBtnGr.add(SellOptRadBtn);
         SellOptRadBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         SellOptRadBtn.setText("Sell an option");
-        opPanel.add(SellOptRadBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 130, -1));
+        opPanel.add(SellOptRadBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 130, -1));
 
         resPanel.setBackground(new java.awt.Color(255, 255, 255));
         resPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -458,7 +466,7 @@ public class OptionPanel extends javax.swing.JPanel {
         optPriceText.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         optPriceText.setForeground(new java.awt.Color(0, 0, 102));
         optPriceText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        optPriceText.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        optPriceText.setBorder(javax.swing.BorderFactory.createBevelBorder(1));
         resPanel.add(optPriceText);
 
         saveBtn.setBackground(new java.awt.Color(255, 255, 255));
@@ -608,8 +616,7 @@ public class OptionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_optPriceBtnActionPerformed
 
     private void volatBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volatBtnActionPerformed
-      if(date2Choice.getDate()!=null && date1Choice.getDate()!=null && date2Choice.getDate().after(date1Choice.getDate()) &&
-              canICalculateVol()){
+      if(date2Choice.getDate()!=null && date1Choice.getDate()!=null && date2Choice.getDate().after(date1Choice.getDate())){
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");  
         boolean formatted = false;
         String fromDate = format.format(date1Choice.getDate()); // format in Db
@@ -658,6 +665,7 @@ public class OptionPanel extends javax.swing.JPanel {
         strikePrText.setText("");
         this.pairHandler = new CommonHandlerForPair(this.pairHandler.getDB());
         this.optionHandler = new CommonHandler();
+        parent.setHandlers(optionHandler, pairHandler);
     }//GEN-LAST:event_resetBtnActionPerformed
 
     private void strikePrTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_strikePrTextActionPerformed
