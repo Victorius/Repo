@@ -170,10 +170,6 @@ public class OptionPanel extends javax.swing.JPanel {
         curBtnGrp = new javax.swing.ButtonGroup();
         mainTabPane = new javax.swing.JTabbedPane();
         optionTabPanel = new javax.swing.JPanel();
-        resPanel = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        optPriceText = new javax.swing.JTextField();
-        saveBtn = new javax.swing.JButton();
         curPairPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         curPairText = new javax.swing.JTextField();
@@ -208,6 +204,10 @@ public class OptionPanel extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         buyOptRadBtn = new javax.swing.JRadioButton();
         SellOptRadBtn = new javax.swing.JRadioButton();
+        resPanel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        optPriceText = new javax.swing.JTextField();
+        saveBtn = new javax.swing.JButton();
         grTabPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -230,42 +230,16 @@ public class OptionPanel extends javax.swing.JPanel {
         jLabel14.setText("jLabel14");
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setMinimumSize(new java.awt.Dimension(749, 639));
+        setPreferredSize(new java.awt.Dimension(770, 720));
         setLayout(new java.awt.BorderLayout());
 
         mainTabPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        mainTabPane.setMinimumSize(new java.awt.Dimension(763, 612));
+        mainTabPane.setPreferredSize(new java.awt.Dimension(768, 612));
 
         optionTabPanel.setBackground(new java.awt.Color(255, 255, 255));
         optionTabPanel.setLayout(new java.awt.BorderLayout());
-
-        resPanel.setBackground(new java.awt.Color(255, 255, 255));
-        resPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        resPanel.setPreferredSize(new java.awt.Dimension(552, 70));
-        resPanel.setLayout(new java.awt.GridLayout(1, 3, 4, 5));
-
-        jLabel3.setBackground(new java.awt.Color(153, 255, 204));
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("OPTION PRICE:");
-        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51)));
-        resPanel.add(jLabel3);
-
-        optPriceText.setEditable(false);
-        optPriceText.setBackground(new java.awt.Color(204, 255, 255));
-        optPriceText.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        optPriceText.setForeground(new java.awt.Color(0, 0, 102));
-        optPriceText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        optPriceText.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        resPanel.add(optPriceText);
-
-        saveBtn.setBackground(new java.awt.Color(255, 255, 255));
-        saveBtn.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        saveBtn.setText("SAVE PRICE");
-        saveBtn.setActionCommand("save");
-        saveBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        saveBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        resPanel.add(saveBtn);
-
-        optionTabPanel.add(resPanel, java.awt.BorderLayout.SOUTH);
 
         curPairPanel.setBackground(new java.awt.Color(204, 204, 255));
         curPairPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -361,7 +335,7 @@ public class OptionPanel extends javax.swing.JPanel {
                 volatBtnActionPerformed(evt);
             }
         });
-        opPanel.add(volatBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 230, 50));
+        opPanel.add(volatBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 230, 50));
 
         optPriceBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         optPriceBtn.setForeground(new java.awt.Color(0, 0, 51));
@@ -373,7 +347,7 @@ public class OptionPanel extends javax.swing.JPanel {
                 optPriceBtnActionPerformed(evt);
             }
         });
-        opPanel.add(optPriceBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 220, 50));
+        opPanel.add(optPriceBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 220, 50));
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -466,6 +440,36 @@ public class OptionPanel extends javax.swing.JPanel {
         SellOptRadBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         SellOptRadBtn.setText("Sell an option");
         opPanel.add(SellOptRadBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 130, -1));
+
+        resPanel.setBackground(new java.awt.Color(255, 255, 255));
+        resPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        resPanel.setPreferredSize(new java.awt.Dimension(552, 70));
+        resPanel.setLayout(new java.awt.GridLayout(1, 3, 4, 5));
+
+        jLabel3.setBackground(new java.awt.Color(153, 255, 204));
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("OPTION PRICE:");
+        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51)));
+        resPanel.add(jLabel3);
+
+        optPriceText.setEditable(false);
+        optPriceText.setBackground(new java.awt.Color(204, 255, 255));
+        optPriceText.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        optPriceText.setForeground(new java.awt.Color(0, 0, 102));
+        optPriceText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        optPriceText.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        resPanel.add(optPriceText);
+
+        saveBtn.setBackground(new java.awt.Color(255, 255, 255));
+        saveBtn.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        saveBtn.setText("SAVE PRICE");
+        saveBtn.setActionCommand("save");
+        saveBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        saveBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        resPanel.add(saveBtn);
+
+        opPanel.add(resPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 756, -1));
 
         optionTabPanel.add(opPanel, java.awt.BorderLayout.CENTER);
 
