@@ -475,6 +475,11 @@ public class OptionPanel extends javax.swing.JPanel {
         saveBtn.setActionCommand("save");
         saveBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         saveBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
         resPanel.add(saveBtn);
 
         opPanel.add(resPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 756, -1));
@@ -572,6 +577,11 @@ public class OptionPanel extends javax.swing.JPanel {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton2.setText("Build Graph");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 140, 30));
 
         jComboBox1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -671,6 +681,26 @@ public class OptionPanel extends javax.swing.JPanel {
     private void strikePrTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_strikePrTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_strikePrTextActionPerformed
+
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        dataset.setValue("Category 1", 43.2);
+        dataset.setValue("Category 2", 190.2);
+        dataset.setValue("Category 3", 17.9);
+        JFreeChart jfc = ChartFactory.createPieChart("Sample",
+                dataset,
+                true,
+                true,
+                false);
+        panel.setChart(jfc);
+        panel.repaint();
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton SellOptRadBtn;
