@@ -130,8 +130,13 @@ public class OptionPanel extends javax.swing.JPanel {
         try {            
             String t = this.pairHandler.getClosePrice(fromDate);
             initPriceText.setText(t==null?"Q":t);
-            if(t.equals("Q")){
-                JOptionPane.showMessageDialog(null, "In this date You have not some data","Error", JOptionPane.ERROR_MESSAGE);
+            if(initPriceText.getText().equals("Q")){
+                initPriceText.setText("");
+                jLabel19.setText("In this date We have not data.");
+                jLabel20.setText("Please,choose another start date.");
+            }else{
+                jLabel19.setText("");
+                jLabel20.setText("");
             }
         } catch (SQLException ex) {
   //          Logger.getLogger(OptionPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -216,6 +221,8 @@ public class OptionPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         optPriceText = new javax.swing.JTextField();
         saveBtn = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         grTabPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -250,7 +257,7 @@ public class OptionPanel extends javax.swing.JPanel {
         optionTabPanel.setLayout(new java.awt.BorderLayout());
 
         curPairPanel.setBackground(new java.awt.Color(204, 204, 255));
-        curPairPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(0));
+        curPairPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         curPairPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         curPairPanel.setPreferredSize(new java.awt.Dimension(552, 100));
         curPairPanel.setLayout(new java.awt.GridLayout(2, 3, 8, 10));
@@ -399,7 +406,7 @@ public class OptionPanel extends javax.swing.JPanel {
         r2Text.setText("0.04");
         opPanel.add(r2Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 80, -1));
 
-        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detailed Information", 0, 0, new java.awt.Font("Arial", 2, 14), new java.awt.Color(51, 0, 0))); // NOI18N
+        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detailed Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 14), new java.awt.Color(51, 0, 0))); // NOI18N
 
         infoTextArea.setEditable(false);
         infoTextArea.setColumns(16);
@@ -466,7 +473,7 @@ public class OptionPanel extends javax.swing.JPanel {
         optPriceText.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         optPriceText.setForeground(new java.awt.Color(0, 0, 102));
         optPriceText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        optPriceText.setBorder(javax.swing.BorderFactory.createBevelBorder(1));
+        optPriceText.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         resPanel.add(optPriceText);
 
         saveBtn.setBackground(new java.awt.Color(255, 255, 255));
@@ -483,6 +490,14 @@ public class OptionPanel extends javax.swing.JPanel {
         resPanel.add(saveBtn);
 
         opPanel.add(resPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 756, -1));
+
+        jLabel19.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(153, 0, 0));
+        opPanel.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 160, 10));
+
+        jLabel20.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(153, 0, 0));
+        opPanel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 160, 10));
 
         optionTabPanel.add(opPanel, java.awt.BorderLayout.CENTER);
 
@@ -728,7 +743,9 @@ public class OptionPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

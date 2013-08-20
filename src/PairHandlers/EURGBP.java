@@ -23,10 +23,9 @@ public class EURGBP extends CommonHandlerForPair{
     public String getClosePrice(String FromDate) throws SQLException{
         if(dbc!=null){
             ResultSet rs = dbc.getData("SELECT close_price FROM HISTORICAL_DATA.EUR_GBP WHERE DAY_DATE="+FromDate+";");
-            if(rs.next()){
-                System.out.println(rs.getDouble(1));
+            if(rs!=null && rs.next())
                 return rs.getString(1);
-            }else
+            else
                 return null;
         }else
             return null;

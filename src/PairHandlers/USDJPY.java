@@ -18,7 +18,7 @@ public class USDJPY extends CommonHandlerForPair{
     public String getClosePrice(String FromDate) throws SQLException{
         if(dbc!=null){
             ResultSet rs = dbc.getData("SELECT close_price FROM HISTORICAL_DATA.USD_JPY WHERE DAY_DATE="+FromDate+";");
-            if(rs.next())
+            if(rs!=null && rs.next())
                 return rs.getString(1);
             else
                 return null;
