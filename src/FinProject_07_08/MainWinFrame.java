@@ -81,14 +81,10 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         this.optionPanel.changePairName(this.pairHandler.getCurrpair());
         this.optionPanel.setOptionH(optionHandler);
         if(this.optionHandler.getOptionName().length()>0)
-            if(this.optionHandler.getOptionName().contains("EUROPEAN") || this.optionHandler.getOptionName().contains("AMERICAN") ||
-                    this.optionHandler.getOptionName().contains("ASIAN"))
-                if(this.flag)
-                    this.optionPanel.changeOptionName(this.optionHandler.getOptionName()+" CALL");
-                else
-                    this.optionPanel.changeOptionName(this.optionHandler.getOptionName()+" PUT");
-             else
-                this.optionPanel.changeOptionName(this.optionHandler.getOptionName());
+            if(this.flag)
+                this.optionPanel.changeOptionName(this.optionHandler.getOptionName()+" CALL");
+            else
+                this.optionPanel.changeOptionName(this.optionHandler.getOptionName()+" PUT");
         this.optionPanel.SetOptions(flag);
         optionPanel.setInfoAboutOption(optionHandler.getDefinitionOfOption());
     }
@@ -117,6 +113,8 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         amerPutItem = new javax.swing.JMenuItem();
         forwCallOpItem = new javax.swing.JMenuItem();
         forwPutOpItem = new javax.swing.JMenuItem();
+        futureCallOption = new javax.swing.JMenuItem();
+        futuresPutOption = new javax.swing.JMenuItem();
         advTypeMenu = new javax.swing.JMenu();
         asianCallTypeItem = new javax.swing.JMenuItem();
         asianPutTypeItem = new javax.swing.JMenuItem();
@@ -330,6 +328,24 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         });
         opTypeMenu.add(forwPutOpItem);
 
+        futureCallOption.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_7, java.awt.event.InputEvent.CTRL_MASK));
+        futureCallOption.setText("Future Call");
+        futureCallOption.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                futureCallOptionActionPerformed(evt);
+            }
+        });
+        opTypeMenu.add(futureCallOption);
+
+        futuresPutOption.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_8, java.awt.event.InputEvent.CTRL_MASK));
+        futuresPutOption.setText("Future Put");
+        futuresPutOption.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                futuresPutOptionActionPerformed(evt);
+            }
+        });
+        opTypeMenu.add(futuresPutOption);
+
         jMenuBar1.add(opTypeMenu);
 
         advTypeMenu.setText("Advanced Options");
@@ -375,6 +391,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
   private void usd_jpyItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usd_jpyItemActionPerformed
         this.pairHandler=new USDJPY(this.pairHandler.getDB());
         refresh();
+        this.optionPanel.setRadioButton();
   }//GEN-LAST:event_usd_jpyItemActionPerformed
 
   private void usd_jpyItemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usd_jpyItemMouseReleased
@@ -519,29 +536,32 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
 
     private void eur_gbpItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eur_gbpItemActionPerformed
         this.pairHandler=new EURGBP(pairHandler.getDB());
-        
         refresh();
-        
+        this.optionPanel.setRadioButton();
     }//GEN-LAST:event_eur_gbpItemActionPerformed
 
     private void eur_jpyItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eur_jpyItemActionPerformed
         this.pairHandler=new EURJPY(pairHandler.getDB());
         refresh();
+        this.optionPanel.setRadioButton();
     }//GEN-LAST:event_eur_jpyItemActionPerformed
 
     private void eur_usdItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eur_usdItemActionPerformed
         this.pairHandler=new EURUSD(pairHandler.getDB());
         refresh();
+        this.optionPanel.setRadioButton();
     }//GEN-LAST:event_eur_usdItemActionPerformed
 
     private void gbp_usdItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gbp_usdItemActionPerformed
         this.pairHandler=new GBPUSD(pairHandler.getDB());
         refresh();
+        this.optionPanel.setRadioButton();
     }//GEN-LAST:event_gbp_usdItemActionPerformed
 
     private void gbp_jpyItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gbp_jpyItemActionPerformed
         this.pairHandler=new GBPJPY(pairHandler.getDB());
         refresh();
+        this.optionPanel.setRadioButton();
     }//GEN-LAST:event_gbp_jpyItemActionPerformed
 
     private void europCallItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_europCallItemActionPerformed
@@ -570,11 +590,12 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
 
     private void forwCallOpItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forwCallOpItemActionPerformed
         this.optionHandler = new ForwardOption();        
+        this.flag=true;
         refresh();
     }//GEN-LAST:event_forwCallOpItemActionPerformed
 
     private void forwPutOpItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forwPutOpItemActionPerformed
-        this.optionHandler = new FuturesOption();
+        this.optionHandler = new ForwardOption();        
         this.flag=false;
         refresh();
     }//GEN-LAST:event_forwPutOpItemActionPerformed
@@ -590,6 +611,18 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         this.flag=false;
         refresh();
     }//GEN-LAST:event_asianPutTypeItemActionPerformed
+
+    private void futureCallOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_futureCallOptionActionPerformed
+        this.optionHandler = new FuturesOption();
+        this.flag=true;
+        refresh();
+    }//GEN-LAST:event_futureCallOptionActionPerformed
+
+    private void futuresPutOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_futuresPutOptionActionPerformed
+        this.optionHandler = new FuturesOption();
+        this.flag=false;
+        refresh();
+    }//GEN-LAST:event_futuresPutOptionActionPerformed
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -608,6 +641,8 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenuItem forwCallOpItem;
     private javax.swing.JMenuItem forwPutOpItem;
+    private javax.swing.JMenuItem futureCallOption;
+    private javax.swing.JMenuItem futuresPutOption;
     private javax.swing.JMenuItem gbp_jpyItem;
     private javax.swing.JMenuItem gbp_usdItem;
     private javax.swing.JMenu graphMenu;

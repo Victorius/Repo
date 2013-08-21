@@ -82,8 +82,8 @@ public class SWTMultipleAxisDemo1
                 200);
 
         JFreeChart chart = ChartFactory.createTimeSeriesChart(
-            "Multiple Axis Demo 3",
-            "Time of Day",
+            "Historical plot",
+            "for all pairs",
             "Primary Range Axis",
             dataset1,
             true,

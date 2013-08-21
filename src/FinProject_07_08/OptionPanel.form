@@ -102,10 +102,10 @@
               </Constraints>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-                <Property name="columns" type="int" value="3"/>
-                <Property name="horizontalGap" type="int" value="8"/>
-                <Property name="rows" type="int" value="2"/>
                 <Property name="verticalGap" type="int" value="10"/>
+                <Property name="horizontalGap" type="int" value="8"/>
+                <Property name="columns" type="int" value="3"/>
+                <Property name="rows" type="int" value="2"/>
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jLabel1">
@@ -613,10 +613,10 @@
                   </Constraints>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-                    <Property name="columns" type="int" value="3"/>
-                    <Property name="horizontalGap" type="int" value="4"/>
-                    <Property name="rows" type="int" value="1"/>
                     <Property name="verticalGap" type="int" value="5"/>
+                    <Property name="horizontalGap" type="int" value="4"/>
+                    <Property name="columns" type="int" value="3"/>
+                    <Property name="rows" type="int" value="1"/>
                   </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -786,6 +786,9 @@
                     <Property name="selected" type="boolean" value="true"/>
                     <Property name="text" type="java.lang.String" value="EUR/GBP"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton1ActionPerformed"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="20" y="80" width="-1" height="-1"/>
@@ -805,6 +808,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="EUR/JPY"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton2ActionPerformed"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="110" y="80" width="-1" height="-1"/>
@@ -824,6 +830,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="EUR/USD"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton3ActionPerformed"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="200" y="80" width="-1" height="-1"/>
@@ -843,6 +852,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="GBP/JPY"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton4ActionPerformed"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="20" y="110" width="80" height="-1"/>
@@ -862,6 +874,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="GBP/USD"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton5ActionPerformed"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="110" y="110" width="-1" height="-1"/>
@@ -881,6 +896,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="USD/JPY"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton6ActionPerformed"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="200" y="110" width="80" height="-1"/>

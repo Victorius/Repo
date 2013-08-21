@@ -9,6 +9,7 @@ import FinProject_07_08.SqlQueryClass;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -106,7 +107,7 @@ public class EURGBP extends CommonHandlerForPair{
         try {
             while(rs!=null && rs.next()){
                 resultDouble.add((Object)rs.getDouble(2));
-                String st = rs.getString(1);
+                Date st = rs.getDate(1);
                 resultString.add((Object)st);
             }
         } catch (SQLException ex) {

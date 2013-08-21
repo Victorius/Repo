@@ -6,24 +6,41 @@ package FinProject_07_08;
 
 import PairHandlers.CommonHandlerForPair;
 import PairHandlers.EURGBP;
+import PairHandlers.EURJPY;
+import PairHandlers.EURUSD;
+import PairHandlers.GBPJPY;
+import PairHandlers.GBPUSD;
+import PairHandlers.USDJPY;
 import handlersOption.CommonHandler;
 import handlersOption.EuropeanOption;
 import helpful_package.Checker;
 import helpful_package.SecondChecker;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.AxisLocation;
+import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.StandardXYItemRenderer;
+import org.jfree.chart.renderer.xy.XYItemRenderer;
+import org.jfree.chart.title.TextTitle;
 import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.time.TimeSeries;
+import org.jfree.data.time.TimeSeriesCollection;
+import org.jfree.data.time.Year;
 import org.jfree.data.xy.XYDataItem;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
+import org.jfree.ui.RectangleInsets;
 
 public class OptionPanel extends javax.swing.JPanel {
 
@@ -32,7 +49,7 @@ public class OptionPanel extends javax.swing.JPanel {
    */
   private SqlQueryClass  sqlClass = null;
   private VolatilityCalc volCalc = new VolatilityCalc(); // declare parametr of class
-  private EuropeanOptionsClass eurClass = null;
+  
   private ForwardFuturesOptionClass forFutClass = null;
   private CommonHandlerForPair pairHandler=null;
   private CommonHandler optionHandler =  new EuropeanOption();
@@ -95,8 +112,6 @@ public class OptionPanel extends javax.swing.JPanel {
           this.pairHandler.setDBConn(sqlClass.getDB());
       }else if(parametres instanceof VolatilityCalc){
           this.volCalc=(VolatilityCalc)parametres;
-      }else if(parametres instanceof EuropeanOptionsClass){
-          this.eurClass = (EuropeanOptionsClass)parametres;
       }else if(parametres instanceof ForwardFuturesOptionClass){
           this.forFutClass = (ForwardFuturesOptionClass)parametres;
       }else if(parametres instanceof Boolean){
@@ -183,10 +198,27 @@ public class OptionPanel extends javax.swing.JPanel {
       }
   }
   
+  public void setRadioButton(){
+      if(this.pairHandler.getCurrpair().equals("EUR/GBP"))
+          this.jButton1.setSelected(true);
+      else if(this.pairHandler.getCurrpair().equals("EUR/JPY"))
+          this.jRadioButton2.setSelected(true);
+      else if(this.pairHandler.getCurrpair().equals("EUR/USD"))
+          this.jRadioButton3.setSelected(true);
+      else if(this.pairHandler.getCurrpair().equals("GBP/JPY"))
+          this.jRadioButton4.setSelected(true);
+      else if(this.pairHandler.getCurrpair().equals("GBP/USD"))
+          this.jRadioButton5.setSelected(true);
+      else if(this.pairHandler.getCurrpair().equals("USD/JPY"))
+          this.jRadioButton6.setSelected(true);
+  }
+  
   public void setClearFields(){
       this.dayCountText.setText("");
       this.initPriceText.setText("");
   }
+  
+  
   
   @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -271,7 +303,7 @@ public class OptionPanel extends javax.swing.JPanel {
         optionTabPanel.setLayout(new java.awt.BorderLayout());
 
         curPairPanel.setBackground(new java.awt.Color(204, 204, 255));
-        curPairPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(0));
+        curPairPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         curPairPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         curPairPanel.setPreferredSize(new java.awt.Dimension(552, 100));
         curPairPanel.setLayout(new java.awt.GridLayout(2, 3, 8, 10));
@@ -328,10 +360,10 @@ public class OptionPanel extends javax.swing.JPanel {
         date2Choice.setMaxSelectableDate(new java.util.Date(1420074119000L));
         date2Choice.setMinSelectableDate(new java.util.Date(978483719000L));
         date2Choice.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 date2ChoiceInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         opPanel.add(date2Choice, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 110, 20));
@@ -420,7 +452,7 @@ public class OptionPanel extends javax.swing.JPanel {
         r2Text.setText("0.04");
         opPanel.add(r2Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 80, -1));
 
-        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detailed Information", 0, 0, new java.awt.Font("Arial", 2, 14), new java.awt.Color(51, 0, 0))); // NOI18N
+        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detailed Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 14), new java.awt.Color(51, 0, 0))); // NOI18N
 
         infoTextArea.setEditable(false);
         infoTextArea.setColumns(16);
@@ -478,7 +510,7 @@ public class OptionPanel extends javax.swing.JPanel {
         optPriceText.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         optPriceText.setForeground(new java.awt.Color(0, 0, 102));
         optPriceText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        optPriceText.setBorder(javax.swing.BorderFactory.createBevelBorder(1));
+        optPriceText.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         resPanel.add(optPriceText);
 
         saveBtn.setBackground(new java.awt.Color(255, 255, 255));
@@ -525,36 +557,66 @@ public class OptionPanel extends javax.swing.JPanel {
         jRadioButton1.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jRadioButton1.setSelected(true);
         jRadioButton1.setText("EUR/GBP");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
         curBtnGrp.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jRadioButton2.setText("EUR/JPY");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, -1));
 
         jRadioButton3.setBackground(new java.awt.Color(255, 255, 255));
         curBtnGrp.add(jRadioButton3);
         jRadioButton3.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jRadioButton3.setText("EUR/USD");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, -1, -1));
 
         jRadioButton4.setBackground(new java.awt.Color(255, 255, 255));
         curBtnGrp.add(jRadioButton4);
         jRadioButton4.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jRadioButton4.setText("GBP/JPY");
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 80, -1));
 
         jRadioButton5.setBackground(new java.awt.Color(255, 255, 255));
         curBtnGrp.add(jRadioButton5);
         jRadioButton5.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jRadioButton5.setText("GBP/USD");
+        jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton5ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jRadioButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, -1));
 
         jRadioButton6.setBackground(new java.awt.Color(255, 255, 255));
         curBtnGrp.add(jRadioButton6);
         jRadioButton6.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jRadioButton6.setText("USD/JPY");
+        jRadioButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton6ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jRadioButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 80, -1));
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -630,14 +692,10 @@ public class OptionPanel extends javax.swing.JPanel {
             // if input are numbers not string
             try{
                 Double option = 0.0;
-             if(this.optionHandler.getOptionName().contains("EUROPEAN") || this.optionHandler.getOptionName().contains("AMERICAN") 
-                     || this.optionHandler.getOptionName().contains("ASIAN"))
                 if(this.flag)
                     option=this.optionHandler.Call(inPrice, strPr,r1, r2, days, vol);
                 else
                     option=this.optionHandler.Put(inPrice, strPr,r1, r2, days, vol);
-             else
-                option=this.optionHandler.Put(inPrice, strPr,r1, r2, days, vol);
                 optPriceText.setText(String.valueOf(option));
             }
             catch(NumberFormatException e){
@@ -708,43 +766,58 @@ public class OptionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        XYSeries series1 = new XYSeries("First");
-        XYSeries series2 = new XYSeries("Second");
-        XYSeries series3 = new XYSeries("Third");
-        XYSeriesCollection dataset = new XYSeriesCollection();
+        JFreeChart chart= null;
         switch(listOfGraphs.getSelectedIndex()){
             case 0:                
-                ArrayList<ArrayList<Object>> objects = this.pairHandler.getAllData();
-                for(int i=0;i<objects.get(0).size();i++){
-                    double a= (double)objects.get(0).get(i);
-                    String bb = (String)objects.get(1).get(i);
-                    int b = new Integer(bb.substring(0,4)+bb.substring(5,7)+bb.substring(8,10));
-                    series1.add(b,a);
-                }
+                chart=HistoricalGraph.getHistoricalGraph(this.pairHandler.getDB());
                 break;
             case 1:
                 break;
             case 2:
                 break;
         }
-        dataset.addSeries(series1);
-        dataset.addSeries(series2);
-        dataset.addSeries(series3);
-        JFreeChart chart = ChartFactory.createXYLineChart(
-            "Line Chart Demo 2", // chart title
-            "X", // x axis label
-            "Y", // y axis label
-            dataset, // data
-            PlotOrientation.VERTICAL,
-            true, // include legend
-            true, // tooltips
-            false // urls
-            );
         panel.setChart(chart);
         panel.repaint();
         
-        
+               
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        this.pairHandler=new EURGBP(pairHandler.getDB());
+        parent.setHandlers(optionHandler, pairHandler);
+        parent.refresh();
+        
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        this.pairHandler=new EURJPY(pairHandler.getDB());
+        parent.setHandlers(optionHandler, pairHandler);
+        parent.refresh();
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        this.pairHandler=new EURUSD(pairHandler.getDB());
+        parent.setHandlers(optionHandler, pairHandler);
+        parent.refresh();
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        this.pairHandler=new GBPJPY(pairHandler.getDB());
+        parent.setHandlers(optionHandler, pairHandler);
+        parent.refresh();
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
+
+    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
+        this.pairHandler=new GBPUSD(pairHandler.getDB());
+        parent.setHandlers(optionHandler, pairHandler);
+        parent.refresh();
+    }//GEN-LAST:event_jRadioButton5ActionPerformed
+
+    private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
+        this.pairHandler=new USDJPY(this.pairHandler.getDB());
+        parent.setHandlers(optionHandler, pairHandler);
+        parent.refresh();
+    }//GEN-LAST:event_jRadioButton6ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton SellOptRadBtn;
