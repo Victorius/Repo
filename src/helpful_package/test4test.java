@@ -40,13 +40,13 @@ public class test4test {
                 true,
                 true,
                 false);
-        ChartFrame  fr = new ChartFrame("lol", jfc);
+        ChartFrame  fr =SWTMultipleAxisDemo1.createDemoPanel();// new ChartFrame("lol", jfc);
         fr.pack();
         fr.setVisible(true);
-        
-        CommonHandler ch = new CommonHandler();
-        ch =new EuropeanOption();
-        ch.Put(1.15,1.15,0.012,0.022,0.5,0.1);
+//        
+//        CommonHandler ch = new CommonHandler();
+//        ch =new EuropeanOption();
+//        ch.Put(1.15,1.15,0.012,0.022,0.5,0.1);
 ////        System.out.println(ch.getCurrencyPair());
 //        Normal n = new Normal(0.0,100.0,RandomEngine.makeDefault());
 //        System.out.println(n.cdf(86));

@@ -12,12 +12,18 @@ import helpful_package.Checker;
 import helpful_package.SecondChecker;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.xy.XYDataItem;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 public class OptionPanel extends javax.swing.JPanel {
 
@@ -41,11 +47,11 @@ public class OptionPanel extends javax.swing.JPanel {
       initComponents();
       date1Choice.setDate(Calendar.getInstance().getTime());
       parent = frame;
-      Thread gh = new Thread(thread);
-      gh.start();
-      SecondChecker sc = new SecondChecker(gh,thread);
-      Thread gh2 =new Thread(sc);
-      gh2.start();
+//      Thread gh = new Thread(thread);
+//      gh.start();
+//      SecondChecker sc = new SecondChecker(gh,thread);
+//      Thread gh2 =new Thread(sc);
+//      gh2.start();
       DefaultPieDataset dataset = new DefaultPieDataset();
         dataset.setValue("Category 1", 43.2);
         dataset.setValue("Category 2", 76.2);
@@ -248,7 +254,7 @@ public class OptionPanel extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jSeparator3 = new javax.swing.JSeparator();
         jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox();
+        listOfGraphs = new javax.swing.JComboBox();
 
         jLabel14.setText("jLabel14");
 
@@ -599,9 +605,9 @@ public class OptionPanel extends javax.swing.JPanel {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 140, 30));
 
-        jComboBox1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "OptionsGraph", "HistoricalVolatility" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 130, 30));
+        listOfGraphs.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        listOfGraphs.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "OptionsGraph", "HistoricalVolatility" }));
+        jPanel1.add(listOfGraphs, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 130, 30));
 
         grTabPanel.add(jPanel1, java.awt.BorderLayout.NORTH);
 
@@ -702,16 +708,39 @@ public class OptionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("Category 1", 43.2);
-        dataset.setValue("Category 2", 190.2);
-        dataset.setValue("Category 3", 17.9);
-        JFreeChart jfc = ChartFactory.createPieChart("Sample",
-                dataset,
-                true,
-                true,
-                false);
-        panel.setChart(jfc);
+        XYSeries series1 = new XYSeries("First");
+        XYSeries series2 = new XYSeries("Second");
+        XYSeries series3 = new XYSeries("Third");
+        XYSeriesCollection dataset = new XYSeriesCollection();
+        switch(listOfGraphs.getSelectedIndex()){
+            case 0:                
+                ArrayList<ArrayList<Object>> objects = this.pairHandler.getAllData();
+                for(int i=0;i<objects.get(0).size();i++){
+                    double a= (double)objects.get(0).get(i);
+                    String bb = (String)objects.get(1).get(i);
+                    int b = new Integer(bb.substring(0,4)+bb.substring(5,7)+bb.substring(8,10));
+                    series1.add(b,a);
+                }
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
+        dataset.addSeries(series1);
+        dataset.addSeries(series2);
+        dataset.addSeries(series3);
+        JFreeChart chart = ChartFactory.createXYLineChart(
+            "Line Chart Demo 2", // chart title
+            "X", // x axis label
+            "Y", // y axis label
+            dataset, // data
+            PlotOrientation.VERTICAL,
+            true, // include legend
+            true, // tooltips
+            false // urls
+            );
+        panel.setChart(chart);
         panel.repaint();
         
         
@@ -733,7 +762,6 @@ public class OptionPanel extends javax.swing.JPanel {
     private javax.swing.JTextField initPriceText;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -767,6 +795,7 @@ public class OptionPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox listOfGraphs;
     private javax.swing.JTabbedPane mainTabPane;
     private javax.swing.JPanel opPanel;
     private javax.swing.ButtonGroup optBtnGr;

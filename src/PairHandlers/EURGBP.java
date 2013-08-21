@@ -9,6 +9,8 @@ import FinProject_07_08.SqlQueryClass;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class EURGBP extends CommonHandlerForPair{
     
@@ -96,5 +98,23 @@ public class EURGBP extends CommonHandlerForPair{
             return results;
         }else
             return null;
+    }
+    public ArrayList<ArrayList<Object>> getAllData(){
+        ArrayList<Object> resultDouble = new ArrayList<Object>();
+        ArrayList<Object> resultString = new ArrayList<Object>();
+        ResultSet rs = this.dbc.getData("SELECT DAY_DATE,close_price from historical_data.eur_gbp");
+        try {
+            while(rs!=null && rs.next()){
+                resultDouble.add((Object)rs.getDouble(2));
+                String st = rs.getString(1);
+                resultString.add((Object)st);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CommonHandlerForPair.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ArrayList<ArrayList<Object>> res = new ArrayList<ArrayList<Object>>();
+        res.add(resultDouble);
+        res.add(resultString);
+        return res;
     }
 }

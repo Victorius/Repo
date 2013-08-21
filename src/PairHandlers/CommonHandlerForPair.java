@@ -9,6 +9,8 @@ import FinProject_07_08.SqlQueryClass;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CommonHandlerForPair {    
     protected String CurrPair="";
@@ -139,7 +141,23 @@ public class CommonHandlerForPair {
         return this.dbc;
     }
     
-    
+    public ArrayList<ArrayList<Object>> getAllData(){
+        ArrayList<Object> resultDouble = new ArrayList<Object>();
+        ArrayList<Object> resultString = new ArrayList<Object>();
+        ResultSet rs = this.dbc.getData("SELECT DAY_DATE,close_price from historical_data.eur_gbp");
+        try {
+            if(rs!=null && rs.next()){
+                resultDouble.add((Object)rs.getDouble(2));
+                resultString.add((Object)rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CommonHandlerForPair.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ArrayList<ArrayList<Object>> res = new ArrayList<ArrayList<Object>>();
+        res.add(resultDouble);
+        res.add(resultString);
+        return null;
+    }
     
 }
 
