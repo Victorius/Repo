@@ -4,20 +4,22 @@
  */
 package PairHandlers;
 
+import FinProject_07_08.DatabaseConnection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class EURJPY extends CommonHandlerForPair{
     
-    public EURJPY(){
+    public EURJPY(DatabaseConnection dbc){
+        this.dbc=dbc;
         this.CurrPair="EUR/JPY";
     }
     
         @Override
     public String getClosePrice(String FromDate) throws SQLException{
         if(dbc!=null){
-            ResultSet rs = dbc.getData("SELECT close_price FROM HISTORICAL_DATA.EUR_JPY WHERE DAY_DATE="+FromDate+";");
+            ResultSet rs = dbc.getData("SELECT close_price FROM HISTORICAL_DATA.EUR_JPY WHERE DAY_DATE=\'"+FromDate+"\';");
             if(rs!=null && rs.next())
                 return rs.getString(1);
             else return null;
@@ -82,7 +84,7 @@ public class EURJPY extends CommonHandlerForPair{
             String md = (m.toString().length()==1)?"0"+m.toString():m.toString();
             String dd = d.toString().length()==1?"0"+d.toString():d.toString();
             FromDate=y.toString()+md+dd;
-            ResultSet rs = dbc.getData("SELECT close_price FROM HISTORICAL_DATA.EUR_JPY WHERE DAY_DATE BETWEEN "+FromDate+" AND "+ToDate+";");
+            ResultSet rs = dbc.getData("SELECT close_price FROM HISTORICAL_DATA.EUR_JPY WHERE DAY_DATE BETWEEN \'"+FromDate+"\' AND \'"+ToDate+"\';");
 
             ArrayList<Float> results = new ArrayList<Float>();
             while(rs.next()){

@@ -106,7 +106,14 @@ public class OptionPanel extends javax.swing.JPanel {
   }
   
   public void changePairName(String text){
-      this.curPairText.setText(text);
+      if(!this.curPairText.getText().equals(text)){
+          this.optPriceText.setText("");
+          dayCountText.setText("");
+          initPriceText.setText("");
+          this.curPairText.setText(text);
+      }
+      
+      
   }
   
   public void changeOptionName(String text){
@@ -130,6 +137,7 @@ public class OptionPanel extends javax.swing.JPanel {
         try {            
             String t = this.pairHandler.getClosePrice(fromDate);
             initPriceText.setText(t==null?"Q":t);
+            System.out.println("Stock price="+t);
             if(initPriceText.getText().equals("Q")){
                 initPriceText.setText("");
                 jLabel19.setText("In this date We have not data.");
@@ -150,7 +158,7 @@ public class OptionPanel extends javax.swing.JPanel {
       try{
           Double x = Double.parseDouble(r1Text.getText());
           x = Double.parseDouble(r2Text.getText());
-          x = Double.parseDouble(strikePrText.getText());
+          x = Double.parseDouble(StrikePriceText.getText());
           x = Double.parseDouble(volText.getText());
           
           return true&&canICalculateVol();
@@ -210,7 +218,6 @@ public class OptionPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         infoTextArea = new javax.swing.JTextArea();
         jLabel11 = new javax.swing.JLabel();
-        strikePrText = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel12 = new javax.swing.JLabel();
@@ -223,6 +230,7 @@ public class OptionPanel extends javax.swing.JPanel {
         saveBtn = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        StrikePriceText = new javax.swing.JTextField();
         grTabPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -257,7 +265,7 @@ public class OptionPanel extends javax.swing.JPanel {
         optionTabPanel.setLayout(new java.awt.BorderLayout());
 
         curPairPanel.setBackground(new java.awt.Color(204, 204, 255));
-        curPairPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        curPairPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder(0));
         curPairPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         curPairPanel.setPreferredSize(new java.awt.Dimension(552, 100));
         curPairPanel.setLayout(new java.awt.GridLayout(2, 3, 8, 10));
@@ -406,7 +414,7 @@ public class OptionPanel extends javax.swing.JPanel {
         r2Text.setText("0.04");
         opPanel.add(r2Text, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 80, -1));
 
-        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detailed Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 2, 14), new java.awt.Color(51, 0, 0))); // NOI18N
+        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detailed Information", 0, 0, new java.awt.Font("Arial", 2, 14), new java.awt.Color(51, 0, 0))); // NOI18N
 
         infoTextArea.setEditable(false);
         infoTextArea.setColumns(16);
@@ -419,15 +427,6 @@ public class OptionPanel extends javax.swing.JPanel {
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel11.setText("Strike price:");
         opPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, -1, -1));
-
-        strikePrText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        strikePrText.setText("0.644");
-        strikePrText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                strikePrTextActionPerformed(evt);
-            }
-        });
-        opPanel.add(strikePrText, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 80, -1));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         opPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 10, 420));
@@ -473,7 +472,7 @@ public class OptionPanel extends javax.swing.JPanel {
         optPriceText.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         optPriceText.setForeground(new java.awt.Color(0, 0, 102));
         optPriceText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        optPriceText.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        optPriceText.setBorder(javax.swing.BorderFactory.createBevelBorder(1));
         resPanel.add(optPriceText);
 
         saveBtn.setBackground(new java.awt.Color(255, 255, 255));
@@ -498,6 +497,7 @@ public class OptionPanel extends javax.swing.JPanel {
         jLabel20.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(153, 0, 0));
         opPanel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 160, 10));
+        opPanel.add(StrikePriceText, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 80, -1));
 
         optionTabPanel.add(opPanel, java.awt.BorderLayout.CENTER);
 
@@ -616,7 +616,7 @@ public class OptionPanel extends javax.swing.JPanel {
             double vol = Double.parseDouble(volText.getText());
             double r1 = Double.parseDouble(r1Text.getText());
             double r2 = Double.parseDouble(r2Text.getText());
-            double strPr = Double.parseDouble(strikePrText.getText());
+            double strPr = Double.parseDouble(StrikePriceText.getText());
             int days = Integer.parseInt(dayCountText.getText());
             System.out.println("init Price " + inPrice + " volat " + vol + " risk dom + " + r1 + " risk for + " + r2 +
                                " strike " + strPr + " days " + days);
@@ -624,7 +624,8 @@ public class OptionPanel extends javax.swing.JPanel {
             // if input are numbers not string
             try{
                 Double option = 0.0;
-             if(this.optionHandler.getOptionName().contains("EUROPEAN") || this.optionHandler.getOptionName().contains("AMERICAN"))
+             if(this.optionHandler.getOptionName().contains("EUROPEAN") || this.optionHandler.getOptionName().contains("AMERICAN") 
+                     || this.optionHandler.getOptionName().contains("ASIAN"))
                 if(this.flag)
                     option=this.optionHandler.Call(inPrice, strPr,r1, r2, days, vol);
                 else
@@ -687,18 +688,17 @@ public class OptionPanel extends javax.swing.JPanel {
         r1Text.setText("");
         r2Text.setText("");
         infoTextArea.setText("");
-        strikePrText.setText("");
+        StrikePriceText.setText("");
         this.pairHandler = new CommonHandlerForPair(this.pairHandler.getDB());
         this.optionHandler = new CommonHandler();
         parent.setHandlers(optionHandler, pairHandler);
     }//GEN-LAST:event_resetBtnActionPerformed
 
-    private void strikePrTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_strikePrTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_strikePrTextActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-        // TODO add your handling code here:
+        if(this.optionHandler.getOptionName().length()>0 && canICalculateOption()){
+            
+        }
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -719,6 +719,7 @@ public class OptionPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton SellOptRadBtn;
+    private javax.swing.JTextField StrikePriceText;
     private javax.swing.JRadioButton buyOptRadBtn;
     private javax.swing.ButtonGroup curBtnGrp;
     private javax.swing.JPanel curPairPanel;
@@ -778,7 +779,6 @@ public class OptionPanel extends javax.swing.JPanel {
     private javax.swing.JPanel resPanel;
     private javax.swing.JButton resetBtn;
     private javax.swing.JButton saveBtn;
-    private javax.swing.JTextField strikePrText;
     private javax.swing.JTextField volText;
     private javax.swing.JButton volatBtn;
     // End of variables declaration//GEN-END:variables

@@ -4,20 +4,22 @@
  */
 package PairHandlers;
 
+import FinProject_07_08.DatabaseConnection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class USDJPY extends CommonHandlerForPair{
 
-    public USDJPY(){
+    public USDJPY(DatabaseConnection dbc){
+        this.dbc=dbc;
         this.CurrPair="USD/JPY";
     }
   
     @Override
     public String getClosePrice(String FromDate) throws SQLException{
         if(dbc!=null){
-            ResultSet rs = dbc.getData("SELECT close_price FROM HISTORICAL_DATA.USD_JPY WHERE DAY_DATE="+FromDate+";");
+            ResultSet rs = dbc.getData("SELECT close_price FROM HISTORICAL_DATA.USD_JPY WHERE DAY_DATE=\'"+FromDate+"\';");
             if(rs!=null && rs.next())
                 return rs.getString(1);
             else

@@ -373,7 +373,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
    
     // currency pair USD/JPY is chosen
   private void usd_jpyItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usd_jpyItemActionPerformed
-        this.pairHandler=new USDJPY();
+        this.pairHandler=new USDJPY(this.pairHandler.getDB());
         refresh();
   }//GEN-LAST:event_usd_jpyItemActionPerformed
 
@@ -518,28 +518,29 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
     }//GEN-LAST:event_forwPutOpItemMouseReleased
 
     private void eur_gbpItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eur_gbpItemActionPerformed
-      System.out.println("123");
         this.pairHandler=new EURGBP(pairHandler.getDB());
+        
         refresh();
+        
     }//GEN-LAST:event_eur_gbpItemActionPerformed
 
     private void eur_jpyItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eur_jpyItemActionPerformed
-        this.pairHandler=new EURJPY();
+        this.pairHandler=new EURJPY(pairHandler.getDB());
         refresh();
     }//GEN-LAST:event_eur_jpyItemActionPerformed
 
     private void eur_usdItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eur_usdItemActionPerformed
-        this.pairHandler=new EURUSD();
+        this.pairHandler=new EURUSD(pairHandler.getDB());
         refresh();
     }//GEN-LAST:event_eur_usdItemActionPerformed
 
     private void gbp_usdItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gbp_usdItemActionPerformed
-        this.pairHandler=new GBPUSD();
+        this.pairHandler=new GBPUSD(pairHandler.getDB());
         refresh();
     }//GEN-LAST:event_gbp_usdItemActionPerformed
 
     private void gbp_jpyItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gbp_jpyItemActionPerformed
-        this.pairHandler=new GBPJPY();
+        this.pairHandler=new GBPJPY(pairHandler.getDB());
         refresh();
     }//GEN-LAST:event_gbp_jpyItemActionPerformed
 
@@ -556,13 +557,13 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
     }//GEN-LAST:event_europPutItemActionPerformed
 
     private void amerCallItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amerCallItemActionPerformed
-        this.optionHandler = new AmericanOption(5);
+        this.optionHandler = new AmericanOption();
         this.flag=true;
         refresh();
     }//GEN-LAST:event_amerCallItemActionPerformed
 
     private void amerPutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amerPutItemActionPerformed
-        this.optionHandler = new AmericanOption(5);
+        this.optionHandler = new AmericanOption();
         this.flag=false;
         refresh();
     }//GEN-LAST:event_amerPutItemActionPerformed

@@ -4,19 +4,21 @@
  */
 package PairHandlers;
 
+import FinProject_07_08.DatabaseConnection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class GBPJPY  extends CommonHandlerForPair{
-    public GBPJPY(){
+    public GBPJPY(DatabaseConnection dbc){
+        this.dbc=dbc;
         this.CurrPair="GBP/JPY";
     }
     
     @Override
     public String getClosePrice(String FromDate) throws SQLException{
         if(dbc!=null){
-            ResultSet rs = dbc.getData("SELECT close_price FROM HISTORICAL_DATA.GBP_JPY WHERE DAY_DATE="+FromDate+";");
+            ResultSet rs = dbc.getData("SELECT close_price FROM HISTORICAL_DATA.GBP_JPY WHERE DAY_DATE=\'"+FromDate+"\';");
             if(rs!=null && rs.next())
                 return rs.getString(1);
             else

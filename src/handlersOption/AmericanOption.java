@@ -8,14 +8,21 @@ package handlersOption;
 public class AmericanOption extends CommonHandler{    
     public Double[][] S,v;
     private Double  dt=2.0;
-    public AmericanOption(int N){
+    public AmericanOption(){
         this.optionName="AMERICAN";
         this.DefinitionOfOption="This is American option type.";
     }
     
     @Override
     public Double Call(double S,double X, double r,double rf, double T,double a){
-        int N= (int)Math.round(T/dt);
+        int N= 0;
+        if(T>120){
+            dt=30.0;
+            N=(int)Math.round(T/dt);
+        }else{
+            N=5;
+            dt = T/N;
+        }
         this.S = new Double[N][N];
         v= new Double[N][N];
         fillTreeS(S,a,dt);
@@ -33,7 +40,14 @@ public class AmericanOption extends CommonHandler{
     
     @Override
     public Double Put(double S,double X, double r,double rf, double T,double a){        
-        int N= (int)Math.round(T/dt);
+        int N= 0;
+        if(T>120){
+            dt=30.0;
+            N=(int)Math.round(T/dt);
+        }else{
+            N=5;
+            dt = T/N;
+        }
         this.S = new Double[N][N];
         v= new Double[N][N];
         fillTreeS(S,a,dt);
@@ -49,10 +63,10 @@ public class AmericanOption extends CommonHandler{
         return v[0][0];
     }
     
-    public Double put(double X, int i, int j){
+    private Double put(double X, int i, int j){
         return 1000*Math.max(X-this.S[i][j],0);        
     }
-    public Double call(double X, int i, int j){
+    private Double call(double X, int i, int j){
         return 1000*Math.max(0,this.S[i][j]-X);
     }
     public void fillTreeS(double s0, double a,double dt){
@@ -64,12 +78,9 @@ public class AmericanOption extends CommonHandler{
         
     }
     
-    public Double getProb(double r, double rf, double dt, double u){
+    private Double getProb(double r, double rf, double dt, double u){
         Double p = (Math.exp((r-rf)*dt) - 1/u)/(u-1/u);
         return p;
     }
-    
-    public void setdt(double dt){
-        this.dt=dt;
-    }
+
 }
