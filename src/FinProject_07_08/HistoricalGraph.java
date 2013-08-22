@@ -40,7 +40,7 @@ public class HistoricalGraph {
       for(int i=0;i<objects.get(0).size();i++){
           double a= (double)objects.get(0).get(i);
           Date bb = (Date)objects.get(1).get(i);
-          series1.add(new Year(bb),a);
+          series1.addOrUpdate(new Year(bb),a);
       }
       dataset.addSeries(series1);
       XYDataset dataset1 = dataset;
@@ -82,7 +82,7 @@ public class HistoricalGraph {
         for(int i=0;i<objects.get(0).size();i++){
             double a= (double)objects.get(0).get(i);
             Date bb = (Date)objects.get(1).get(i);
-            series2.add(new Year(bb),a);
+            series2.addOrUpdate(new Year(bb),a);
         }
         dataset.addSeries(series2);
         XYDataset dataset2 =dataset;
@@ -104,7 +104,7 @@ public class HistoricalGraph {
         for(int i=0;i<objects.get(0).size();i++){
             double a= (double)objects.get(0).get(i);
             Date bb = (Date)objects.get(1).get(i);
-            series3.add(new Year(bb),a);
+            series3.addOrUpdate(new Year(bb),a);
         }
         dataset.addSeries(series3);
         XYDataset dataset3 =dataset;
@@ -125,7 +125,7 @@ public class HistoricalGraph {
         for(int i=0;i<objects.get(0).size();i++){
             double a= (double)objects.get(0).get(i);
             Date bb = (Date)objects.get(1).get(i);
-            series4.add(new Year(bb),a);
+            series4.addOrUpdate(new Year(bb),a);
         }
         dataset.addSeries(series4);
         XYDataset dataset4 = dataset;
@@ -147,7 +147,7 @@ public class HistoricalGraph {
         for(int i=0;i<objects.get(0).size();i++){
             double a= (double)objects.get(0).get(i);
             Date bb = (Date)objects.get(1).get(i);
-            series5.add(new Year(bb),a);
+            series5.addOrUpdate(new Year(bb),a);
         }
         dataset.addSeries(series5);
         XYDataset dataset5 = dataset;
@@ -169,7 +169,7 @@ public class HistoricalGraph {
         for(int i=0;i<objects.get(0).size();i++){
             double a= (double)objects.get(0).get(i);
             Date bb = (Date)objects.get(1).get(i);
-            series6.add(new Year(bb),a);
+            series6.addOrUpdate(new Year(bb),a);
         }
         dataset.addSeries(series6);
         XYDataset dataset6 = dataset;
