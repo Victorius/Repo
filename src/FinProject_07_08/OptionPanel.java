@@ -15,32 +15,15 @@ import handlersOption.CommonHandler;
 import handlersOption.EuropeanOption;
 import helpful_package.Checker;
 import helpful_package.SecondChecker;
-import java.awt.Color;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import javax.swing.JOptionPane;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.AxisLocation;
-import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.plot.XYPlot;
-import org.jfree.chart.renderer.xy.StandardXYItemRenderer;
-import org.jfree.chart.renderer.xy.XYItemRenderer;
-import org.jfree.chart.title.TextTitle;
 import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.time.TimeSeries;
-import org.jfree.data.time.TimeSeriesCollection;
-import org.jfree.data.time.Year;
-import org.jfree.data.xy.XYDataItem;
-import org.jfree.data.xy.XYDataset;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
-import org.jfree.ui.RectangleInsets;
+
 
 public class OptionPanel extends javax.swing.JPanel {
 
@@ -64,11 +47,11 @@ public class OptionPanel extends javax.swing.JPanel {
       initComponents();
       date1Choice.setDate(Calendar.getInstance().getTime());
       parent = frame;
-//      Thread gh = new Thread(thread);
-//      gh.start();
-//      SecondChecker sc = new SecondChecker(gh,thread);
-//      Thread gh2 =new Thread(sc);
-//      gh2.start();
+      Thread gh = new Thread(thread);
+      gh.start();
+      SecondChecker sc = new SecondChecker(gh,thread);
+      Thread gh2 =new Thread(sc);
+      gh2.start();
       DefaultPieDataset dataset = new DefaultPieDataset();
         dataset.setValue("Category 1", 43.2);
         dataset.setValue("Category 2", 76.2);

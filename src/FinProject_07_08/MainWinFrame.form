@@ -52,7 +52,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="eur_gbpItem">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="1"/>
+                  <KeyStroke key="Shift+1"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/SourceImage/eur_gbp1.jpg&quot;))" type="code"/>
@@ -68,7 +68,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="eur_jpyItem">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="2"/>
+                  <KeyStroke key="Shift+2"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/SourceImage/eur_jpy1.jpg&quot;))" type="code"/>
@@ -83,7 +83,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="eur_usdItem">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="3"/>
+                  <KeyStroke key="Shift+3"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/SourceImage/eur_usd1.jpg&quot;))" type="code"/>
@@ -98,7 +98,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="gbp_usdItem">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="4"/>
+                  <KeyStroke key="Shift+4"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/SourceImage/gbp_usd1.jpg&quot;))" type="code"/>
@@ -113,7 +113,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="gbp_jpyItem">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="5"/>
+                  <KeyStroke key="Shift+5"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/SourceImage/gbp_jpy1.jpg&quot;))" type="code"/>
@@ -128,7 +128,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="usd_jpyItem">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="6"/>
+                  <KeyStroke key="Shift+6"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/SourceImage/usd_jpy1.jpg&quot;))" type="code"/>

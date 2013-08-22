@@ -123,6 +123,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/SourceImage/icon.png")));
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -148,7 +149,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         curPairMenu.setBackground(new java.awt.Color(204, 204, 204));
         curPairMenu.setText("Currency Pair");
 
-        eur_gbpItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, 0));
+        eur_gbpItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.SHIFT_MASK));
         eur_gbpItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SourceImage/eur_gbp1.jpg")));
         eur_gbpItem.setText("EUR/GBP");
         eur_gbpItem.setSelected(true);
@@ -164,7 +165,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         });
         curPairMenu.add(eur_gbpItem);
 
-        eur_jpyItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, 0));
+        eur_jpyItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.SHIFT_MASK));
         eur_jpyItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SourceImage/eur_jpy1.jpg")));
         eur_jpyItem.setText("EUR/JPY");
         eur_jpyItem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -179,7 +180,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         });
         curPairMenu.add(eur_jpyItem);
 
-        eur_usdItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, 0));
+        eur_usdItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.SHIFT_MASK));
         eur_usdItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SourceImage/eur_usd1.jpg")));
         eur_usdItem.setText("EUR/USD");
         eur_usdItem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -194,7 +195,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         });
         curPairMenu.add(eur_usdItem);
 
-        gbp_usdItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, 0));
+        gbp_usdItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.SHIFT_MASK));
         gbp_usdItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SourceImage/gbp_usd1.jpg")));
         gbp_usdItem.setText("GBP/USD");
         gbp_usdItem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -209,7 +210,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         });
         curPairMenu.add(gbp_usdItem);
 
-        gbp_jpyItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, 0));
+        gbp_jpyItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, java.awt.event.InputEvent.SHIFT_MASK));
         gbp_jpyItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SourceImage/gbp_jpy1.jpg")));
         gbp_jpyItem.setText("GBP/JPY");
         gbp_jpyItem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -224,7 +225,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         });
         curPairMenu.add(gbp_jpyItem);
 
-        usd_jpyItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_6, 0));
+        usd_jpyItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_6, java.awt.event.InputEvent.SHIFT_MASK));
         usd_jpyItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SourceImage/usd_jpy1.jpg")));
         usd_jpyItem.setText("USD/JPY");
         usd_jpyItem.addMouseListener(new java.awt.event.MouseAdapter() {

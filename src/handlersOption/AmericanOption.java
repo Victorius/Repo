@@ -64,10 +64,10 @@ public class AmericanOption extends CommonHandler{
     }
     
     private Double put(double X, int i, int j){
-        return 1000*Math.max(X-this.S[i][j],0);        
+        return Math.max(X-this.S[i][j],0);        
     }
     private Double call(double X, int i, int j){
-        return 1000*Math.max(0,this.S[i][j]-X);
+        return Math.max(0,this.S[i][j]-X);
     }
     public void fillTreeS(double s0, double a,double dt){
         double u = Math.exp(a*Math.sqrt(dt));
