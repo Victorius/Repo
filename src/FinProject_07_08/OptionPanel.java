@@ -4,15 +4,8 @@
  */
 package FinProject_07_08;
 
-import PairHandlers.CommonHandlerForPair;
-import PairHandlers.EURGBP;
-import PairHandlers.EURJPY;
-import PairHandlers.EURUSD;
-import PairHandlers.GBPJPY;
-import PairHandlers.GBPUSD;
-import PairHandlers.USDJPY;
-import handlersOption.CommonHandler;
-import handlersOption.EuropeanOption;
+import PairHandlers.*;
+import handlersOption.*;
 import helpful_package.Checker;
 import helpful_package.SecondChecker;
 import java.sql.SQLException;
@@ -47,22 +40,24 @@ public class OptionPanel extends javax.swing.JPanel {
       initComponents();
       date1Choice.setDate(Calendar.getInstance().getTime());
       parent = frame;
-      Thread gh = new Thread(thread);
-      gh.start();
-      SecondChecker sc = new SecondChecker(gh,thread);
-      Thread gh2 =new Thread(sc);
-      gh2.start();
-      DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("Category 1", 43.2);
-        dataset.setValue("Category 2", 76.2);
-        dataset.setValue("Category 1", 10.9);
-        JFreeChart jfc = ChartFactory.createPieChart("Sample",
-                dataset,
-                true,
-                true,
-                false);
-        panel = new ChartPanel(jfc);
-      grTabPanel.add(panel);
+//      Thread gh = new Thread(thread);
+//      gh.start();
+//      SecondChecker sc = new SecondChecker(gh,thread);
+//      Thread gh2 =new Thread(sc);
+//      gh2.start();
+//      DefaultPieDataset dataset = new DefaultPieDataset();
+//      dataset.setValue("Category 1", 43.2);
+//      dataset.setValue("Category 2", 27.9);
+//      dataset.setValue("Category 3", 79.5);
+//      JFreeChart chart = ChartFactory.createPieChart(
+//        "Sample Pie Chart",
+//        dataset,
+//        true, // legend?
+//        true, // tooltips?
+//        false // URLs?
+//      );
+//      panel = new ChartPanel(chart);
+      GraphPanel.add(panel);
   }
   
   /**
@@ -268,8 +263,10 @@ public class OptionPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jSeparator3 = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
+        GraphPanel = new javax.swing.JPanel();
+        ContentGraphPanel = new javax.swing.JPanel();
         listOfGraphs = new javax.swing.JComboBox();
+        jButton2 = new javax.swing.JButton();
 
         jLabel14.setText("jLabel14");
 
@@ -639,7 +636,24 @@ public class OptionPanel extends javax.swing.JPanel {
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 410, 180));
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 10, 300));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 10, 250));
+
+        grTabPanel.add(jPanel1, java.awt.BorderLayout.NORTH);
+
+        mainTabPane.addTab("Recalculation", grTabPanel);
+
+        GraphPanel.setMinimumSize(new java.awt.Dimension(761, 50));
+        GraphPanel.setPreferredSize(new java.awt.Dimension(761, 671));
+        GraphPanel.setLayout(new java.awt.BorderLayout());
+
+        ContentGraphPanel.setBackground(new java.awt.Color(255, 255, 255));
+        ContentGraphPanel.setMinimumSize(new java.awt.Dimension(761, 150));
+        ContentGraphPanel.setPreferredSize(new java.awt.Dimension(761, 150));
+        ContentGraphPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        listOfGraphs.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        listOfGraphs.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "OptionsGraph", "HistoricalVolatility" }));
+        ContentGraphPanel.add(listOfGraphs, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 130, 30));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton2.setText("Build Graph");
@@ -648,15 +662,12 @@ public class OptionPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 140, 30));
+        ContentGraphPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 140, 30));
 
-        listOfGraphs.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        listOfGraphs.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "OptionsGraph", "HistoricalVolatility" }));
-        jPanel1.add(listOfGraphs, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 130, 30));
+        GraphPanel.add(ContentGraphPanel, java.awt.BorderLayout.NORTH);
+        ContentGraphPanel.getAccessibleContext().setAccessibleParent(null);
 
-        grTabPanel.add(jPanel1, java.awt.BorderLayout.NORTH);
-
-        mainTabPane.addTab("Ghaph representation", grTabPanel);
+        mainTabPane.addTab("Graph representation", GraphPanel);
 
         add(mainTabPane, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
@@ -698,7 +709,7 @@ public class OptionPanel extends javax.swing.JPanel {
         dayCountText.setText(String.valueOf(daysCount));
         try{
             initPriceText.setText((String)this.pairHandler.getClosePrice(fromDate));
-            volCalc.calculateVolatility(daysCount, this.pairHandler.getClosePrice(fromDate,toDate), daysCount);
+            volCalc.calculateVolatility(30, this.pairHandler.getClosePrice(fromDate,toDate), 30);
             volText.setText(String.valueOf(volCalc.getVolatility()));
         }catch(SQLException e){
           e.printStackTrace();
@@ -755,6 +766,7 @@ public class OptionPanel extends javax.swing.JPanel {
                 chart=HistoricalGraph.getHistoricalGraph(this.pairHandler.getDB());
                 break;
             case 1:
+                chart=HistoricalGraph.getHistoricalVolatilityGraph(this.pairHandler.getDB());
                 break;
             case 2:
                 break;
@@ -803,6 +815,8 @@ public class OptionPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jRadioButton6ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel ContentGraphPanel;
+    private javax.swing.JPanel GraphPanel;
     private javax.swing.JRadioButton SellOptRadBtn;
     private javax.swing.JTextField StrikePriceText;
     private javax.swing.JRadioButton buyOptRadBtn;

@@ -87,8 +87,8 @@ public class GBPJPY  extends CommonHandlerForPair{
             }
             String md = (m.toString().length()==1)?"0"+m.toString():m.toString();
             String dd = d.toString().length()==1?"0"+d.toString():d.toString();
-            FromDate=y.toString()+md+dd;
-            ResultSet rs = dbc.getData("SELECT close_price FROM HISTORICAL_DATA.GBP_JPY WHERE DAY_DATE BETWEEN "+FromDate+" AND "+ToDate+";");
+            String FromDate2=y.toString()+md+dd;
+            ResultSet rs = dbc.getData("SELECT close_price FROM HISTORICAL_DATA.GBP_JPY WHERE DAY_DATE BETWEEN "+FromDate2+" AND "+FromDate+";");
             
             ArrayList<Float> results = new ArrayList<Float>();
             while(rs.next()){

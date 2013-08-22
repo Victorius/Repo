@@ -111,10 +111,10 @@ public class CommonHandlerForPair {
                 }
                 String md = (m.toString().length()==1)?"0"+m.toString():m.toString();
                 String dd = d.toString().length()==1?"0"+d.toString():d.toString();
-                FromDate=y.toString()+md+dd;
-                rs = dbc.getData("SELECT close_price FROM HISTORICAL_DATA.EUR_GBP WHERE DAY_DATE BETWEEN \'"+FromDate+"\' AND \'"+ToDate+"\';");
+                String FromDate2=y.toString()+md+dd;
+                rs = dbc.getData("SELECT close_price FROM HISTORICAL_DATA.EUR_GBP WHERE DAY_DATE BETWEEN \'"+FromDate2+"\' AND \'"+FromDate+"\';");
             }while(!rs.next());            
-            ArrayList<Float> results = new ArrayList<Float>();
+            ArrayList<Float> results = new ArrayList<>();
             while(rs.next()){
                 results.add(rs.getFloat(1));
             }
