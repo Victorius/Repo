@@ -8,6 +8,9 @@ import FinProject_07_08.DatabaseConnection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class USDJPY extends CommonHandlerForPair{
 
@@ -59,6 +62,7 @@ public class USDJPY extends CommonHandlerForPair{
                     case 1: d=31+t;break;
                     case 2: 
                         d=31+t;
+                        break;
                     case 3:
                         if(Math.abs((y-2000))%4==0)
                             d=29+t;
@@ -93,6 +97,26 @@ public class USDJPY extends CommonHandlerForPair{
             return results;
         }else
             return null;
+    }
+    
+    @Override
+    public ArrayList<ArrayList<Object>> getAllData(){
+        ArrayList<Object> resultDouble = new ArrayList<Object>();
+        ArrayList<Object> resultString = new ArrayList<Object>();
+        ResultSet rs = this.dbc.getData("SELECT DAY_DATE,close_price from historical_data.usd_jpy");
+        try {
+            while(rs!=null && rs.next()){
+                resultDouble.add((Object)rs.getDouble(2));
+                Date st = rs.getDate(1);
+                resultString.add((Object)st);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CommonHandlerForPair.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ArrayList<ArrayList<Object>> res = new ArrayList<ArrayList<Object>>();
+        res.add(resultDouble);
+        res.add(resultString);
+        return res;
     }
 }
 

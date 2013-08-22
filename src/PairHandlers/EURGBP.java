@@ -5,7 +5,6 @@
 package PairHandlers;
 
 import FinProject_07_08.DatabaseConnection;
-import FinProject_07_08.SqlQueryClass;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -65,6 +64,7 @@ public class EURGBP extends CommonHandlerForPair{
                     case 1: d=31+t;break;
                     case 2: 
                         d=31+t;
+                        break;
                     case 3:
                         if(Math.abs((y-2000))%4==0)
                             d=29+t;
