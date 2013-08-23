@@ -1,12 +1,18 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * DATE: 17/08/2013
+ * Checker Class
  */
+
 package helpful_package;
 
 import FinProject_07_08.OptionPanel;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+/**
+ *
+ * @author Anastasiia
+ */
 
 public class Checker implements Runnable{
 private java.util.Date prevFirstDate=null,prevSecondDate=null;
@@ -40,7 +46,7 @@ private OptionPanel op=null;
         }
         }catch(Exception e){
             e.printStackTrace();
-            System.out.println("I am broken");
+            System.out.println("The first checker is not working properly");
         }
     }
     

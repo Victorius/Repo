@@ -1,7 +1,8 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * DATE: 23/07/2013
+ * SQL Query Class
  */
+
 package FinProject_07_08;
 
 import java.sql.*;

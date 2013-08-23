@@ -1,7 +1,8 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * DATE: 23/08/2013
+ * Historical Graph Class
  */
+
 package FinProject_07_08;
 
 import PairHandlers.EURGBP;
@@ -31,8 +32,9 @@ import org.jfree.ui.RectangleInsets;
 
 /**
  *
- * @author Admin
+ * @author Anastasiia
  */
+
 public class HistoricalGraph {
     public static JFreeChart getHistoricalGraph(DatabaseConnection dbc){
       TimeSeriesCollection dataset= new TimeSeriesCollection();      

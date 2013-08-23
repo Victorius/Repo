@@ -1,13 +1,19 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * DATE: 14/08/2013
+ * Common Handler Class
  */
+
 package handlersOption;
 
 import FinProject_07_08.SqlQueryClass;
 import cern.jet.random.Normal;
 import cern.jet.random.engine.RandomEngine;
 import PairHandlers.CommonHandlerForPair;
+
+/**
+ *
+ * @author Anastasiia
+ */
 
 
 public class CommonHandler {

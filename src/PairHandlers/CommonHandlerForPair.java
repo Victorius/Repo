@@ -1,7 +1,8 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * DATE: 10/08/2013
+ * Common HandlerForPair Class
  */
+
 package PairHandlers;
 
 import FinProject_07_08.DatabaseConnection;
@@ -12,6 +13,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+/**
+ *
+ * @author Anastasiia
+ */
 
 public class CommonHandlerForPair {    
     protected String CurrPair="";

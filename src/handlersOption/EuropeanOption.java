@@ -1,11 +1,17 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * DATE: 14/08/2013
+ * European Option Class
  */
+
 package handlersOption;
 
 import cern.jet.random.Normal;
 import cern.jet.random.engine.RandomEngine;
+
+/**
+ *
+ * @author Anastasiia
+ */
 
 public class EuropeanOption extends CommonHandler{
     public Double[][] S,v;

@@ -1,12 +1,13 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * DATE: 19/08/2013
+ * Second Checker Class
  */
+
 package helpful_package;
 
 /**
  *
- * @author Admin
+ * @author Anastasiia
  */
 public class SecondChecker implements Runnable{
     Thread th = null;
@@ -21,7 +22,7 @@ public class SecondChecker implements Runnable{
             if(!th.isAlive()){
                 th = new Thread(ch);
                 th.start();
-                System.out.println("My slave works");
+                System.out.println("The second checher is working");
             }                
         }
     }

@@ -1,7 +1,8 @@
 /*
- * Date 16/07/2013
- * 
+ * DATE: 10/08/2013
+ * Main WinFrame Class
  */
+
 package FinProject_07_08;
 
 import PairHandlers.*;
@@ -118,13 +119,12 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         advTypeMenu = new javax.swing.JMenu();
         asianCallTypeItem = new javax.swing.JMenuItem();
         asianPutTypeItem = new javax.swing.JMenuItem();
-        graphMenu = new javax.swing.JMenu();
         helpMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/SourceImage/icon.png")));
-        getContentPane().setLayout(new java.awt.BorderLayout());
 
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         fileMenu.setText("File");
@@ -351,6 +351,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
 
         advTypeMenu.setText("Advanced Options");
 
+        asianCallTypeItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.ALT_MASK));
         asianCallTypeItem.setText("Asian Call");
         asianCallTypeItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -359,6 +360,7 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         });
         advTypeMenu.add(asianCallTypeItem);
 
+        asianPutTypeItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.ALT_MASK));
         asianPutTypeItem.setText("Asian Put");
         asianPutTypeItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -368,9 +370,6 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
         advTypeMenu.add(asianPutTypeItem);
 
         jMenuBar1.add(advTypeMenu);
-
-        graphMenu.setText("Graphs");
-        jMenuBar1.add(graphMenu);
 
         helpMenu.setText("Help");
         jMenuBar1.add(helpMenu);
@@ -646,7 +645,6 @@ public class MainWinFrame extends javax.swing.JFrame implements ActionListener, 
     private javax.swing.JMenuItem futuresPutOption;
     private javax.swing.JMenuItem gbp_jpyItem;
     private javax.swing.JMenuItem gbp_usdItem;
-    private javax.swing.JMenu graphMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu opTypeMenu;

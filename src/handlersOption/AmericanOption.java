@@ -1,8 +1,14 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * DATE: 16/08/2013
+ * American Option Class
  */
+
 package handlersOption;
+
+/**
+ *
+ * @author Anastasiia
+ */
 
 
 public class AmericanOption extends CommonHandler{    

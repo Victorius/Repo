@@ -38,6 +38,12 @@
  *
  */
 
+
+/*
+ * DATE: 22/08/2013
+ * Demo Graph Class
+ */
+
 package helpful_package;
 
 import java.awt.Color;
@@ -67,8 +73,10 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.ui.RectangleInsets;
 
 /**
- * This demo shows a time series chart that has multiple range axes.
+ *
+ * @author Anastasiia
  */
+
 public class SWTMultipleAxisDemo1
 {
     /**
@@ -83,7 +91,7 @@ public class SWTMultipleAxisDemo1
 
         JFreeChart chart = ChartFactory.createTimeSeriesChart(
             "Historical plot",
-            "for all pairs",
+            "for all currency pairs",
             "Primary Range Axis",
             dataset1,
             true,

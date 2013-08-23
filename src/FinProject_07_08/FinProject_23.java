@@ -1,15 +1,17 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * DATE: 23/07/2013
+ * Main Application Class
  */
+
 package FinProject_07_08;
 
 import java.awt.Dimension;
 
 /**
  *
- * @author 1210081
+ * @author Anastasiia
  */
+
 public class FinProject_23 {
 
   /**

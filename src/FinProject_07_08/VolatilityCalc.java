@@ -1,4 +1,7 @@
-
+/*
+ * DATE: 01/08/2013
+ * Option Panel Class
+ */
 
 package FinProject_07_08;
 
@@ -9,6 +12,7 @@ import javax.swing.JOptionPane;
  *
  * @author Anastasiia
  */
+
 public class VolatilityCalc {
     
     private int numObserv; //

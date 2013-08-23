@@ -1,16 +1,18 @@
 /*
  * DATE: 23/07/2013
- * version 1.0
+ * Database Connection Class
  */
 
 package FinProject_07_08;
+
+import java.awt.HeadlessException;
+import java.sql.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Anastasiia
  */
-import java.awt.HeadlessException;
-import java.sql.*;
-import javax.swing.JOptionPane;
 
 public class DatabaseConnection {
     
@@ -30,7 +32,6 @@ public class DatabaseConnection {
             dbName = this.dbName;
             userName = this.userName;
             password = this.password;
-            //con = (Connection)DriverManager.getConnection("jdbc:mysql://scomp-webdev/" + dbName, userName, password);
             con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost/" + dbName, userName, password);
             stat = (Statement)con.createStatement();
             JOptionPane.showMessageDialog(null, "Connected to historical_data database","Successful", JOptionPane.INFORMATION_MESSAGE);

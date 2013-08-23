@@ -1,7 +1,8 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * DATE: 21/08/2013
+ * Options on Futures Class
  */
+
 package handlersOption;
 
 import cern.jet.random.Normal;
@@ -9,8 +10,9 @@ import cern.jet.random.engine.RandomEngine;
 
 /**
  *
- * @author Anthony
+ * @author Anastasiia
  */
+
 public class FuturesOption extends CommonHandler{
     public FuturesOption(){
         this.optionName="FUTURES";

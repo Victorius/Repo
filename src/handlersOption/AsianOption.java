@@ -1,11 +1,17 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * DATE: 20/08/2013
+ * Asian Option Class
  */
+
 package handlersOption;
 
 import cern.jet.random.Normal;
 import cern.jet.random.engine.RandomEngine;
+
+/**
+ *
+ * @author Anastasiia
+ */
 
 
 public class AsianOption extends CommonHandler{
