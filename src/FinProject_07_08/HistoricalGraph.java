@@ -359,9 +359,9 @@ public class HistoricalGraph {
     
     private static double getVolFromPeriod(List<Object> a){
         VolatilityCalc volc = new VolatilityCalc();
-        ArrayList<Float> as = new ArrayList<>();
+        ArrayList<Float> as = new ArrayList<Float>();
         for(Object i:a){
-            as.add((Float)i);
+            as.add(new Float((Double)i));
         }
         return volc.calculateVolatility(30, as, 30);
         
