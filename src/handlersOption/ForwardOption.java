@@ -17,7 +17,15 @@ import cern.jet.random.engine.RandomEngine;
 public class ForwardOption extends CommonHandler{
     public ForwardOption(){
         this.optionName="FORWARD";
-        this.DefinitionOfOption="This is Forward option type.";
+        this.DefinitionOfOption = "\n" +
+                                             "Option on Forwards\n" +
+                                             "________________________\n" +
+                                             "is generally only traded\n" +
+                                             "'over the counter' between\n" +
+                                             "buyer and seller, since the\n" +
+                                             "can be negotiated to have any\n" +
+                                             "a set of individual te4rms or\n" +
+                                             "conditions required by a buyer.\n";
     }
     
     @Override

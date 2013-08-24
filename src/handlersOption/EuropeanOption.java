@@ -18,7 +18,12 @@ public class EuropeanOption extends CommonHandler{
     private Double  dt=0.0;
     public EuropeanOption(){
         this.optionName="EUROPEAN";
-        this.DefinitionOfOption="This is European option type.";
+        this.DefinitionOfOption = "\n" +
+                                              "European Call/Put Option\n" +
+                                              "________________________\n" +
+                                              "is an option which can be\n" +
+                                              "exercised or not only at\n" +
+                                              "the option exercise date.";
     }
     
     

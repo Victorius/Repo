@@ -16,7 +16,15 @@ import cern.jet.random.engine.RandomEngine;
 public class FuturesOption extends CommonHandler{
     public FuturesOption(){
         this.optionName="FUTURES";
-        this.DefinitionOfOption="This is Future option type.";
+        this.DefinitionOfOption = "\n" +
+                                             "Option on Futures\n" +
+                                             "________________________\n" +
+                                             "is an option that has a\n" +
+                                             "standardized expiry dates and\n" +
+                                             "strike prices, etc.\n" +
+                                             "Once created and initially sold\n" +
+                                             "futures are then suitable for\n" + 
+                                             "secondary trading on an exchange.\n";
     }
     
     @Override

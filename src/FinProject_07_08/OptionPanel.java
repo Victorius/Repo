@@ -273,6 +273,8 @@ public class OptionPanel extends javax.swing.JPanel {
         jSeparator5 = new javax.swing.JSeparator();
         graphPanel = new javax.swing.JPanel();
         contentGraphPanel = new javax.swing.JPanel();
+        date1Choice1 = new com.toedter.calendar.JDateChooser();
+        jLabel1 = new javax.swing.JLabel();
         listOfGraphs = new javax.swing.JComboBox();
         buildGrBtn = new javax.swing.JButton();
         leftImageLbl = new javax.swing.JLabel();
@@ -722,6 +724,18 @@ public class OptionPanel extends javax.swing.JPanel {
         contentGraphPanel.setPreferredSize(new java.awt.Dimension(761, 150));
         contentGraphPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        date1Choice1.setBackground(new java.awt.Color(153, 153, 153));
+        date1Choice1.setAutoscrolls(true);
+        date1Choice1.setDate(Calendar.getInstance().getTime());
+        date1Choice1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        date1Choice1.setMaxSelectableDate(new java.util.Date(1420074119000L));
+        date1Choice1.setMinSelectableDate(new java.util.Date(978483719000L));
+        contentGraphPanel.add(date1Choice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 170, 30));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Start date");
+        contentGraphPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 150, -1));
+
         listOfGraphs.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         listOfGraphs.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Historical data of exchange rates", "Historical volatility" }));
         listOfGraphs.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -852,7 +866,15 @@ public class OptionPanel extends javax.swing.JPanel {
                 chart=HistoricalGraph.getHistoricalGraph(this.pairHandler.getDB());
                 break;
             case 1:
-                chart=HistoricalGraph.getHistoricalVolatilityGraph(this.pairHandler.getDB());
+                if(date1Choice1.getDate()!=null){
+                    try{
+                        chart=HistoricalGraph.getHistoricalVolatilityGraph(this.pairHandler.getDB(),date1Choice.getDate(),date1Choice.getCalendar().getTime());
+                    }catch(SQLException e){
+                        JOptionPane.showMessageDialog(null, "Sorry, We have problems with db.","Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }else
+                    JOptionPane.showMessageDialog(null, "Please, Make a correct choice of start date.","Error", JOptionPane.ERROR_MESSAGE);
+                
                 break;
             case 2:
                 break;
@@ -927,6 +949,7 @@ public class OptionPanel extends javax.swing.JPanel {
     private javax.swing.JLabel currDateLbl;
     private javax.swing.JLabel dashLbl;
     private com.toedter.calendar.JDateChooser date1Choice;
+    private com.toedter.calendar.JDateChooser date1Choice1;
     private com.toedter.calendar.JDateChooser date2Choice;
     private com.toedter.calendar.JDateChooser date3Choice;
     private javax.swing.JTextField dayCountText;
@@ -935,6 +958,7 @@ public class OptionPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane infoPane;
     private javax.swing.JTextArea infoTextArea;
     private javax.swing.JTextField initPriceText;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

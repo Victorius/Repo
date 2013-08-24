@@ -16,7 +16,12 @@ public class AmericanOption extends CommonHandler{
     private Double  dt=2.0;
     public AmericanOption(){
         this.optionName="AMERICAN";
-        this.DefinitionOfOption="This is American option type.";
+        this.DefinitionOfOption = "\n" +
+                                             "American Call/Put Option\n" +
+                                             "________________________\n" +
+                                             "is an option which can be\n" +
+                                             "exercised at any up to\n" +
+                                             "the option expiry date.";
     }
     
     @Override
